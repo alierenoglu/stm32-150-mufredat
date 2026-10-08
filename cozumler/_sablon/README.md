@@ -1,37 +1,15 @@
 # NNN · Görev adı
 
-**Kart:** ör. STM32F407G-DISC1 · **Ortam:** gerçek kart / Wokwi (Blue Pill) · **Harcanan süre:** ~ saat · **Issue:** #
+## Ne yaptım?
 
-## Ne yaptım
+Görevi nasıl çözdüğünü birkaç cümleyle anlat.
 
-İki üç cümle: görevin amacını nasıl çözdün, hangi yaklaşımı seçtin, neden.
+## Nasıl çalıştırılır?
 
-## Bağlantılar ve ayarlar
+- Kart / MCU:
+- Wokwi bağlantısı:
+- Gerekli bağlantılar, ayarlar ve çalıştırma adımları:
 
-| Sinyal | Pin | Not |
-|---|---|---|
-| ör. LED | PD12 | aktif yüksek |
+## Test sonucu
 
-Önemli CubeMX ayarları (clock, timer PSC/ARR, baud vb.) ve hesapları:
-
-## Nasıl test ettim
-
-Başarı ölçütlerini tek tek nasıl doğruladığın. Tekrarlanabilir olsun: başka biri bu adımlarla aynı sonucu almalı.
-
-## Sonuç
-
-Kanıt: ekran görüntüsü, grafik, log çıktısı, ölçüm tablosu, video bağlantısı.
-
-| Ölçüt | Hedef | Ölçülen |
-|---|---|---|
-| | | |
-
-## Zorlandığım yer
-
-Neye takıldın, nasıl çözdün, hangi kaynak işe yaradı.
-
-## Öğrendiklerim
-
--
--
--
+Görevin başarı ölçütlerini nasıl kontrol ettin? Beklenen ve gözlenen sonucu yaz. Ekran görüntüsü, log veya ölçüm ekle.

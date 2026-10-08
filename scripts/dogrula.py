@@ -3,7 +3,7 @@
 import re
 import sys
 from _ortak import KOK, veriyi_yukle
-from md_uret import ozet_uret, modul_uret, modul_dosyasi, malzeme_uret
+from md_uret import ozet_uret, modul_uret, modul_dosyasi
 
 def main():
     v=veriyi_yukle();ts=v['gorevler'];ids=[t['no'] for t in ts]

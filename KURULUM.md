@@ -1,32 +1,6 @@
-# Kurulum
+# Başlangıç
 
-## 1. Ana müfredat deposu: Ali
-
-1. ZIP'i yeni bir klasöre aç. Eski çalışma klasörlerini silme.
-2. Açılan `stm32-150` klasöründe bu dosya ve `gorevler.json` bulunmalı.
-3. GitHub'da yeni repo oluştur: adı `stm32-150-mufredat`, Public. README, lisans veya gitignore ekletme; dosyalar pakette hazır.
-4. Terminalde klasörün içine gir. Finder'dan klasörü Terminale sürükleyerek tam yolunu alabilirsin.
-5. `pwd` ile doğru klasörü kontrol et. Komutları ev klasöründe çalıştırma.
-
-Git kuruluysa:
-
-```bash
-git --version
-git init -b main
-git add .
-git commit -m "STM32 150 gorevlik ortak mufredat"
-git remote add origin https://github.com/alierenoglu/stm32-150-mufredat.git
-git push -u origin main
-```
-
-Klasörde zaten Git deposu veya origin varsa hata aldığın noktada dur ve `git status` ile `git remote -v` çıktısını incele. `.git` silme veya zorla push yapma. Kimlik doğrulama için GitHub CLI (`gh auth login` ardından `gh auth setup-git`) veya GitHub Desktop kullan. GitHub hesap parolasıyla HTTPS push yapılmaz.
-
-GitHub CLI kuruluysa boş depoyu web yerine `gh repo create stm32-150-mufredat --public --source . --push` ile oluşturabilirsin. Bu alternatifte önce `git remote add` ve `git push` çalıştırma. Daha önce oluşturulmuş depoyu tekrar oluşturmaya çalışma.
-
-6. GitHub repo sayfasında Settings > General > Template repository seçeneğini işaretle.
-7. Ana repoda 150 kişisel görev issue'su açma. Ana repo müfredat ve yardım içindir.
-
-## 2. Her katılımcının kişisel deposu
+## 1. Kendi reponu oluştur
 
 1. Ana repoda Use this template > Create a new repository.
 2. Owner kendi hesabın. İsim `stm32-embedded-lab`, görünürlük Public.
@@ -48,23 +22,43 @@ python3 scripts/issue_olustur.py --repo KULLANICI/stm32-embedded-lab --sadece 1-
 
 Bütün görevleri bir anda istersen `--sadece 1-150` kullan. Aynı numaralı mevcut görevler yeniden açılmaz. Mevcut issue metinleri değiştirilmez. İleride 16-30 gibi sonraki aralığı ekle.
 
-## 3. Wokwi ve ilk HAL deneyi
+## 2. Wokwi'de ilk proje
 
-Öncelik ücretsiz tarayıcıdaki public HAL örneğidir. Wokwi'nin resmî Nucleo C031/L031 sayfalarındaki HAL örneklerini açıp bir kopya oluştur. HAL_GPIO_WritePin kullanan ilk LED değişikliğini çalıştır. Arduino `digitalWrite` örneğini HAL projesi sanma.
+[Resmî Nucleo C031](https://docs.wokwi.com/parts/board-st-nucleo-c031c6) veya [Nucleo L031](https://docs.wokwi.com/parts/board-st-nucleo-l031k6) sayfasındaki HAL örneğini kopyala. İlk hedef `HAL_GPIO_WritePin` ile LED yakmak.
 
-- https://docs.wokwi.com/parts/board-st-nucleo-c031c6
-- https://docs.wokwi.com/parts/board-st-nucleo-l031k6
+Seçtiğin MCU'ya uygun pinleri ve ayarları kullan. Görevlerdeki F103 destek etiketleri başka kartlar için doğrulama sayılmaz. F103 için derlenen program başka MCU'da kullanılmaz.
 
-Depodaki destek etiketleri Blue Pill F103 için başlangıç bilgisidir. C031/L031 örneği kullanırsan pinleri, clock'u ve timer numaralarını o karta göre seç. F103 için derlenmiş ELF başka MCU'da çalıştırılmaz.
+Tarayıcı ve VS Code erişimi farklıdır. Önce tarayıcıdaki HAL örneğini çalıştır. Yerel CubeIDE projesini Wokwi'ye bağlama adımında [erişim koşullarını](https://wokwi.com/pricing) kontrol et.
 
-CubeMX/CubeIDE ile yerel HAL geliştirme devam eder. Yerel ELF'i Wokwi'ye yükleme yolu ve VS Code lisansı ayrıca doğrulanmalıdır. Fiyat sayfasında Community ücretsiz public projeler için, VS Code ise Hobby+ özellikleri arasında listeleniyor. Ücretsiz hesap açılmasını sınırsız ücretsiz VS Code lisansı olarak kabul etme. Deneme erişimini kalıcı ücretsiz erişim sayma. Para ödemeden önce tarayıcı yolu ile ilk görev çalışsın.
+## 3. Bir görevi tamamla
 
-- https://wokwi.com/pricing
-- https://docs.wokwi.com/vscode/getting-started
+Görevi `GOREVLER.md` üzerinden aç. İlk görev için:
 
-Bu paket simülasyonu çalıştırılarak doğrulanmış firmware içermez. İlk başarılı projenin bağlantısını, MCU'sunu, derleme şeklini ve tarihini ilgili çözümün README.md dosyasına yaz.
+```bash
+mkdir -p cozumler/001-led
+cp cozumler/_sablon/README.md cozumler/001-led/README.md
+```
 
-## 4. Her görev
+- Kaynak kodu, `diagram.json` dosyasını ve varsa özel bileşen dosyalarını bu klasöre koy.
+- README'ye kullandığın kartı, Wokwi bağlantısını, çalıştırma adımlarını ve test sonucunu yaz.
+- Görevin başarı ölçütlerini kontrol et. Sonucu ekran görüntüsü, log veya ölçümle göster.
+- Tamamlandıysa `ILERLEME.md` içindeki kutuyu işaretle.
 
-[Çalışma düzenini](CALISMA-DUZENI.md) uygula. Issue numarası görev numarasıyla aynı olmak zorunda değildir. Kanıtı ekledikten sonra PR'ı birleştir, doğru issue'yu kapat ve ilerleme kutusunu işaretle.
+Değişiklikleri kontrol edip kaydet:
 
+```bash
+git status
+git add cozumler/001-led ILERLEME.md
+git commit -m "[001] HAL ile LED yakma"
+git push
+```
+
+GitHub'da ilgili görev issue'sunu tamamlandı olarak kapat. Issue numarası görev numarasıyla aynı olmak zorunda değildir. Çalışmayan veya simülatörde doğrulanamayan görev açık kalır.
+
+İlk görevlerde kendi repona doğrudan commit yeterli. Birlikte kod geliştirirken veya inceleme isterken branch ve PR kullanabilirsiniz.
+
+## 4. Neleri saklayacaksın?
+
+Projeyi yeniden çalıştırmak için gereken kaynakları ve ayarları sakla. CubeIDE kullanıyorsan `.ioc`, Core, startup, linker ve gerekli bağımlılıklar da buna dahildir. Derleme çıktıları ve IDE önbelleğini ekleme. Büyük videolar için bağlantı kullan.
+
+Bir bölüm bitince çözümlerinizi birbirinize gösterin. Herkes kendi kodunu açıklayabilsin.

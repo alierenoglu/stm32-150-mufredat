@@ -7,7 +7,6 @@
 Görevleri değiştirmek için gorevler.json'u düzenle ve bu scripti çalıştır:
     python3 scripts/md_uret.py
 """
-from collections import OrderedDict
 
 from _ortak import (KOK, veriyi_yukle, slug, gerekenler_metni, gerekenler_kisa,
                     onkosul_metni, wokwi_metni)
@@ -63,8 +62,7 @@ def ozet_uret(veri):
 def modul_uret(veri, m):
     a, b = m["aralik"]
     L = [UYARI, f"# {m['kod']} · {m['ad']}", ""]
-    L.append(f"Görevler {a:03d}–{b:03d} · [Tüm görevler](../GOREVLER.md)"
-             f"")
+    L.append(f"Görevler {a:03d}–{b:03d} · [Tüm görevler](../GOREVLER.md)")
     L.append("")
     L.append(m["aciklama"])
     for t in gorevler_modulde(veri, m):
@@ -93,39 +91,6 @@ def modul_uret(veri, m):
         if t.get("not"):
             L.append("")
             L.append(f"> {t['not']}")
-    L.append("")
-    return "\n".join(L)
-
-
-def malzeme_uret(veri):
-    kullanim = OrderedDict((k, {"zorunlu": [], "alternatifli": []}) for k in veri["parcalar"])
-    for t in veri["gorevler"]:
-        for tok in t["gerekenler"]:
-            kodlar = tok.split("/")
-            anahtar = "alternatifli" if len(kodlar) > 1 else "zorunlu"
-            for k in kodlar:
-                kullanim[k][anahtar].append(t["no"])
-    L = [UYARI, "# Malzeme Listesi", ""]
-    L.append("Her parçanın ilk gerektiği görev ve kaç görevde kullanıldığı. "
-             "“Alternatifli” görevlerde parça yerine başka bir seçenek de kullanılabilir "
-             "(ör. motor yerine 069'daki sanal motor).")
-    L.append("")
-    L.append("| Kod | Parça | İlk görev | Zorunlu olduğu görev sayısı | Alternatifli görev sayısı |")
-    L.append("|---|---|---|---|---|")
-    for k, p in veri["parcalar"].items():
-        z, alt = kullanim[k]["zorunlu"], kullanim[k]["alternatifli"]
-        hepsi = sorted(z + alt)
-        ilk = f"{hepsi[0]:03d}" if hepsi else "—"
-        L.append(f"| {k} | {p['ad']} | {ilk} | {len(z)} | {len(alt)} |")
-    L.append("")
-    L.append("## Hangi görev hangi parçayı istiyor")
-    L.append("")
-    for k, p in veri["parcalar"].items():
-        z, alt = kullanim[k]["zorunlu"], kullanim[k]["alternatifli"]
-        if (not z and not alt) or k == "KART":
-            continue
-        L.append(f"- **{p['kisa']}** — zorunlu: {', '.join(f'{n:03d}' for n in z) or '—'}"
-                 + (f"; alternatifli: {', '.join(f'{n:03d}' for n in alt)}" if alt else ""))
     L.append("")
     return "\n".join(L)
 
