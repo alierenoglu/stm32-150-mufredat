@@ -1,0 +1,3969 @@
+{
+  "surum": 2,
+  "parcalar": {
+    "KART": {
+      "ad": "STM32 geliştirme kartı",
+      "etiket": null,
+      "kisa": "Kart"
+    },
+    "LED": {
+      "ad": "Ek LED'ler ve 220–330 Ω dirençler (kartta yeterli LED yoksa)",
+      "etiket": null,
+      "kisa": "LED"
+    },
+    "BTN": {
+      "ad": "Ek buton(lar)",
+      "etiket": null,
+      "kisa": "Buton"
+    },
+    "POT": {
+      "ad": "Potansiyometre (10 kΩ)",
+      "etiket": "parca:pot",
+      "kisa": "Pot"
+    },
+    "BUZ": {
+      "ad": "Pasif buzzer",
+      "etiket": "parca:buzzer",
+      "kisa": "Buzzer"
+    },
+    "SERI": {
+      "ad": "Bilgisayara seri bağlantı (kartın sanal COM portu veya 3,3 V USB-UART dönüştürücü)",
+      "etiket": null,
+      "kisa": "Seri bağlantı"
+    },
+    "PY": {
+      "ad": "Bilgisayarda Python 3 (pyserial, matplotlib/pyqtgraph)",
+      "etiket": null,
+      "kisa": "Python"
+    },
+    "IMU": {
+      "ad": "IMU modülü: ivmeölçer + jiroskop (I²C ve SPI destekli olanı tercih edin)",
+      "etiket": "parca:imu",
+      "kisa": "IMU"
+    },
+    "OLED": {
+      "ad": "SSD1306 I²C OLED ekran (128×64)",
+      "etiket": "parca:oled",
+      "kisa": "OLED"
+    },
+    "MOTOR": {
+      "ad": "Encoder'lı redüktörlü DC motor, motor sürücü (ör. TB6612FNG) ve ayrı motor beslemesi",
+      "etiket": "parca:motor",
+      "kisa": "Motor"
+    },
+    "SANAL": {
+      "ad": "Sanal motor ve encoder üreteci (Görev 069)",
+      "etiket": null,
+      "kisa": "Sanal motor"
+    },
+    "KART2": {
+      "ad": "İkinci STM32 kartı",
+      "etiket": "parca:ikinci-kart",
+      "kisa": "2. kart"
+    },
+    "CAN": {
+      "ad": "2 adet 3,3 V CAN transceiver modülü (ör. SN65HVD230) ve 2 adet 120 Ω direnç",
+      "etiket": "parca:can",
+      "kisa": "CAN"
+    },
+    "SD": {
+      "ad": "microSD kart modülü (SPI)",
+      "etiket": "parca:sd",
+      "kisa": "microSD"
+    },
+    "MAG": {
+      "ad": "Manyetometre modülü",
+      "etiket": "parca:mag",
+      "kisa": "Manyetometre"
+    },
+    "LA": {
+      "ad": "Logic analyzer veya osiloskop (opsiyonel)",
+      "etiket": null,
+      "kisa": "Logic analyzer"
+    },
+    "RC": {
+      "ad": "Direnç ve kondansatör (RC filtre için)",
+      "etiket": null,
+      "kisa": "RC filtre"
+    }
+  },
+  "turler": {
+    "ana": {
+      "ad": "Ana görev",
+      "etiket": "ana"
+    },
+    "mini": {
+      "ad": "Mini uygulama",
+      "etiket": "mini-uygulama"
+    },
+    "bitirme": {
+      "ad": "Bitirme projesi",
+      "etiket": "bitirme"
+    },
+    "pekistirme": {
+      "ad": "Pekiştirme",
+      "etiket": "pekistirme"
+    },
+    "ileri": {
+      "ad": "İleri görev",
+      "etiket": "ileri"
+    }
+  },
+  "wokwi": {
+    "evet": {
+      "ad": "Wokwi desteğine uygun, görev deneyi gerekli",
+      "kisa": "✅",
+      "etiket": "wokwi:evet"
+    },
+    "kismen": {
+      "ad": "Wokwi'de kısmen yapılır",
+      "kisa": "🟡",
+      "etiket": "wokwi:kismen"
+    },
+    "dene": {
+      "ad": "Wokwi desteği belirsiz, dene",
+      "kisa": "❔",
+      "etiket": "wokwi:dene"
+    },
+    "hayir": {
+      "ad": "Wokwi ile donanım doğrulaması yok",
+      "kisa": "❌",
+      "etiket": "wokwi:hayir"
+    },
+    "pc": {
+      "ad": "Kart gerekmez, bilgisayarda",
+      "kisa": "💻",
+      "etiket": "wokwi:pc"
+    }
+  },
+  "moduller": [
+    {
+      "no": 1,
+      "kod": "M01",
+      "ad": "GPIO, Zamanlama ve Durum Makineleri",
+      "aralik": [
+        1,
+        15
+      ],
+      "aciklama": "Proje kurulumu, debugger, GPIO, bloklamayan zamanlama, buton olayları ve durum makineleri. Modülün sonunda kodunu modüllere ayırmış ve zamanı bloklamadan yönetiyor olacaksın."
+    },
+    {
+      "no": 2,
+      "kod": "M02",
+      "ad": "Kesmeler, Timer, PWM ve ADC",
+      "aralik": [
+        16,
+        30
+      ],
+      "aciklama": "Kesmeler ve öncelikleri, clock ağacı, timer hesapları, PWM, input capture ve ADC. Modül, ilk aç-kapa kontrolcünle (histerezisli termostat) biter."
+    },
+    {
+      "no": 3,
+      "kod": "M03",
+      "ad": "UART, Komut İşleme, DMA ve Veri Kaydı",
+      "aralik": [
+        31,
+        45
+      ],
+      "aciklama": "Seri haberleşme, komut ayrıştırma, halka tampon, paket protokolü ve CRC, DMA, sabit örnekleme, Flash'a kayıt ve bilgisayarda canlı grafik. Bu modülün araçlarını sonraki her modülde veri görmek için kullanacaksın."
+    },
+    {
+      "no": 4,
+      "kod": "M04",
+      "ad": "I²C, SPI, Sensörler, Ekran ve Sürücü Yazma",
+      "aralik": [
+        46,
+        60
+      ],
+      "aciklama": "I²C ve SPI ile sensör okuma, register haritası, kesme ve bloklamasız okuma, kendi sürücü katmanını yazma, OLED ekran ve bağlantı hatalarından kurtulma."
+    },
+    {
+      "no": 5,
+      "kod": "M05",
+      "ad": "Motor, Encoder, Hız ve Konum Kontrolü",
+      "aralik": [
+        61,
+        75
+      ],
+      "aciklama": "DC motor, encoder, hız ve konum kontrolü. Wokwi yolunda 069 önce hazırlanır: motor modeli ve A/B üreteci kullanılır. Timer encoder modu ayrıca doğrulanır. Yazılımsal çözüm, donanım timer doğrulaması olarak raporlanmaz."
+    },
+    {
+      "no": 6,
+      "kod": "M06",
+      "ad": "IMU, Kalibrasyon ve Filtreler",
+      "aralik": [
+        76,
+        85
+      ],
+      "aciklama": "Jiroskop bias'ı ve kayma, ivmeölçerden açı, kalibrasyon, sabit örnekleme, complementary ve Kalman filtreleri. Filtreleri aynı kayıt üzerinde karşılaştırıp kartta ve bilgisayarda aynı sonucu aldığını göstereceksin."
+    },
+    {
+      "no": 7,
+      "kod": "M07",
+      "ad": "CAN, Hata Yönetimi, Watchdog ve FreeRTOS",
+      "aralik": [
+        86,
+        95
+      ],
+      "aciklama": "CAN haberleşmesi ve hata durumları, watchdog, hata yönetimi durum makinesi, HardFault analizi ve FreeRTOS temelleri."
+    },
+    {
+      "no": 8,
+      "kod": "M08",
+      "ad": "Bitirme Projesi: Steer-by-Wire Prototipi",
+      "aralik": [
+        96,
+        100
+      ],
+      "aciklama": "Steer-by-wire eğitim prototipi. Wokwi sürümünde IMU veya kayıt girdisi, UART mesajları ve sanal motor kullanılır. CAN sürümü ayrı bir donanım doğrulama aşamasıdır. Gerçek araçta kullanıma yönelik bir sistem değildir."
+    },
+    {
+      "no": 9,
+      "kod": "M09",
+      "ad": "Pekiştirme",
+      "aralik": [
+        101,
+        125
+      ],
+      "aciklama": "Hata bulma, ölçme, karşılaştırma ve farklı koşullarda deneme. Zorunlu değil. Her görevin önkoşulu belirtilmiş; o ana görevi bitirdikten sonra istediğin zaman yapabilirsin."
+    },
+    {
+      "no": 10,
+      "kod": "M10",
+      "ad": "İleri Görevler",
+      "aralik": [
+        126,
+        150
+      ],
+      "aciklama": "Veri kaydı, bootloader, gelişmiş kestirim ve kontrol, test/CI altyapısı ve bitirme projesinin genişletilmesi. Zorunlu değil; 150. görev (portföy) herkes için önerilir."
+    }
+  ],
+  "gorevler": [
+    {
+      "no": 1,
+      "baslik": "HAL ile LED yak",
+      "amac": "CubeMX'te kartını seçip bir LED pinini GPIO çıkışı yap, kodu üret ve CubeIDE'de HAL ile LED'i yak, sonra söndür.",
+      "arastir": [
+        "CubeMX'te proje oluşturma",
+        "GPIO çıkış modu",
+        "HAL_GPIO_WritePin",
+        "CubeMX projesini CubeIDE'ye aktarma"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "Program karta (veya simülatöre) yüklenince LED yanıyor.",
+        "Kodu değiştirip LED'i söndürebiliyor ve tekrar yükleyebiliyorsun."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Önce ücretsiz tarayıcı HAL örneğiyle LED deneyini doğrula. Harici ELF yükleme/VS Code yolunda lisans ve hedef MCU eşleşmesini ayrıca kontrol et. KURULUM.md dosyasına bak.",
+      "tur": "ana",
+      "onkosul": [],
+      "modul": 1
+    },
+    {
+      "no": 2,
+      "baslik": "Debugger ile adım adım çalıştır",
+      "amac": "Programı debug modunda başlat. Breakpoint koy, satır satır ilerle, bir değişkeni izle ve LED'in bağlı olduğu GPIO portunun ODR register'ını debugger'da gör.",
+      "arastir": [
+        "breakpoint",
+        "step over / step into",
+        "Live Expressions / Watch",
+        "SFR görünümü",
+        "ODR register'ı"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "LED satırında durup bir adım ilerlediğinde ODR'deki ilgili bitin değiştiğini gösteriyorsun.",
+        "Çalışma sırasında bir değişkenin değerini debugger'dan değiştirebiliyorsun."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "GDB desteği bulunur. VS Code lisansı ve debugger bağlantısı ayrı doğrulanmalı. Ücretsiz tarayıcı kullanımında aynı iş akışını varsayma.",
+      "tur": "ana",
+      "onkosul": [
+        1
+      ],
+      "modul": 1
+    },
+    {
+      "no": 3,
+      "baslik": "HAL_Delay ile yanıp sönen LED",
+      "amac": "LED'i 500 ms yanık, 500 ms sönük olacak şekilde sürekli yakıp söndür.",
+      "arastir": [
+        "HAL_Delay",
+        "SysTick",
+        "HAL_GPIO_TogglePin"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "10 periyodun toplam süresi kronometreyle yaklaşık 10 s."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        2
+      ],
+      "modul": 1
+    },
+    {
+      "no": 4,
+      "baslik": "Butonla LED",
+      "amac": "Önce butona basılı tutunca LED yansın, bırakınca sönsün. Sonra davranışı değiştir: her basışta LED'in durumu bir kez değişsin; basılı tutmak durumu tekrar değiştirmesin.",
+      "arastir": [
+        "GPIO giriş modu",
+        "pull-up / pull-down",
+        "kenar algılama (önceki ve şimdiki durum)"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN"
+      ],
+      "basari": [
+        "Basılı tutma modu doğru çalışıyor.",
+        "Değiştirme modunda basılı tutunca LED titremiyor, durum bir kez değişiyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        3
+      ],
+      "modul": 1
+    },
+    {
+      "no": 5,
+      "baslik": "Debounce'lu ikili sayaç",
+      "amac": "Her basışta bir sayaç artsın ve değeri 4 LED'de ikili sistemde gösterilsin (0–15, sonra 0). Önce filtresiz çalıştırıp butonun sıçramasını (bir basışın birden fazla sayılmasını) gözle, sonra yazılımla filtrele.",
+      "arastir": [
+        "buton sıçraması (bounce)",
+        "zaman tabanlı debounce",
+        "bit işlemleri ile ikili gösterim"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Filtresiz sürümde fazladan sayımları gösterebiliyorsun.",
+        "Filtreli sürümde 20 basışta sayaç tam 20 artıyor (16'dan sonra başa dönerek)."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Simülasyondaki butonun sıçrayıp sıçramadığını kontrol et; sıçramıyorsa sıçramayı gerçek kartta gözle.",
+      "tur": "mini",
+      "onkosul": [
+        4
+      ],
+      "modul": 1
+    },
+    {
+      "no": 6,
+      "baslik": "Kayan ışık",
+      "amac": "Dört LED'i sırayla yak; son LED'den sonra başa dön. Sıra ve süre tek bir tabloda tanımlansın, LED pinleri koda dağılmasın.",
+      "arastir": [
+        "dizi ile pin tablosu",
+        "modüler aritmetik"
+      ],
+      "gerekenler": [
+        "KART",
+        "LED"
+      ],
+      "basari": [
+        "Sırayı değiştirmek için sadece tabloyu değiştirmek yetiyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        5
+      ],
+      "modul": 1
+    },
+    {
+      "no": 7,
+      "baslik": "Butonla hız kademeleri",
+      "amac": "Butonla kayan ışığın hızını üç kademe arasında döngüsel olarak değiştir. Bu görevde HAL_Delay kullan.",
+      "arastir": [
+        "durum değişkeni",
+        "kademe tablosu"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Her basış bir sonraki kademeye geçiriyor.",
+        "HAL_Delay yüzünden bazı basışların kaçırıldığını gösteriyor ve nedenini README'de açıklıyorsun."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        6
+      ],
+      "modul": 1
+    },
+    {
+      "no": 8,
+      "baslik": "HAL_Delay olmadan zamanlama",
+      "amac": "HAL_GetTick ile zamanı takip ederek LED'i yakıp söndür; ana döngü hiçbir yerde beklemesin. 7. görevi bu yöntemle yeniden yaz.",
+      "arastir": [
+        "bloklamayan (non-blocking) zamanlama",
+        "HAL_GetTick",
+        "işaretsiz tam sayı çıkarma"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Ana döngüde HAL_Delay yok.",
+        "7. görevdeki kaçırılan basış sorunu ortadan kalktı."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        7
+      ],
+      "modul": 1
+    },
+    {
+      "no": 9,
+      "baslik": "Bağımsız yazılım zamanlayıcıları",
+      "amac": "İki LED'i farklı aralıklarla (ör. 300 ms ve 700 ms) bağımsız yakıp söndür, aynı anda butonu gecikmesiz oku. Zamanlayıcı mantığını tekrar kullanılabilir bir yapıya (struct + fonksiyon) çevir.",
+      "arastir": [
+        "struct",
+        "fonksiyon ile tekrar kullanılabilir kod",
+        "işbirlikçi (cooperative) zamanlama"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Üç iş aynı anda çalışıyor, buton tepkisi gecikmesiz.",
+        "Yeni bir zamanlı iş eklemek 2–3 satır sürüyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        8
+      ],
+      "modul": 1
+    },
+    {
+      "no": 10,
+      "baslik": "Trafik lambası",
+      "amac": "Araç için kırmızı-sarı-yeşil, yaya için kırmızı-yeşil lamba yap. Yaya butonuna basıldığında mevcut aşama tamamlanıp yayaya yeşil yansın. Mantığı durum makinesiyle kur.",
+      "arastir": [
+        "sonlu durum makinesi (FSM)",
+        "enum ve switch-case",
+        "durum geçiş diyagramı"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Durum geçiş diyagramı README'de.",
+        "Basış hangi aşamada olursa olsun aşama tamamlanmadan geçiş olmuyor.",
+        "Yaya yeşili bitince sistem normal döngüye dönüyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        9
+      ],
+      "modul": 1
+    },
+    {
+      "no": 11,
+      "baslik": "Kısa ve uzun basış",
+      "amac": "Basış süresini ölç; kısa basışı (< 500 ms) ve uzun basışı (≥ 1 s) ayırt et, her birine farklı LED davranışı ata. Uzun basış, buton bırakılmadan algılansın.",
+      "arastir": [
+        "basış süresi ölçümü",
+        "eşik değerleri",
+        "durum makinesi"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "10 kısa ve 10 uzun basışın hepsi doğru sınıflanıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        10
+      ],
+      "modul": 1
+    },
+    {
+      "no": 12,
+      "baslik": "Olay tabanlı buton modülü",
+      "amac": "Butonu kısa basış, uzun basış ve çift tıklama olayları üreten bir modüle çevir. Ana kod yalnızca bu olayları kullansın.",
+      "arastir": [
+        "olay (event) tabanlı tasarım",
+        "çift tıklama zaman penceresi"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Üç olay da güvenilir şekilde ayrılıyor.",
+        "Ana döngüde buton zamanlamasına dair kod yok."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        11
+      ],
+      "modul": 1
+    },
+    {
+      "no": 13,
+      "baslik": "HAL'siz GPIO",
+      "amac": "LED'i HAL fonksiyonu kullanmadan, doğrudan RCC ve GPIO register'larına yazarak yak. Ardından HAL_GPIO_WritePin'in içine debugger ile gir ve aynı register'a yazdığını göster.",
+      "arastir": [
+        "Reference Manual",
+        "memory map",
+        "RCC saat açma register'ı",
+        "MODER/CRL-CRH, ODR, BSRR (kartına göre)"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "Register'lı sürüm çalışıyor.",
+        "BSRR'nin neden var olduğunu (atomik set/reset) README'de açıklıyorsun."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Blue Pill (F103) ile F4 serisinin GPIO register'ları farklı; kartının Reference Manual'ine bak.",
+      "tur": "ana",
+      "onkosul": [
+        12
+      ],
+      "modul": 1
+    },
+    {
+      "no": 14,
+      "baslik": "Kodunu modüllere ayır",
+      "amac": "Şu ana kadarki LED, buton ve zamanlayıcı kodunu led.c/h, button.c/h, soft_timer.c/h gibi modüllere ayır. main.c'de yalnızca başlatma ve ana döngü kalsın.",
+      "arastir": [
+        "header dosyası",
+        "static ve extern",
+        "arayüz ile uygulamayı ayırma",
+        "CubeMX'in USER CODE bölümleri"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "CubeMX'te kod yeniden üretilince (Generate Code) senin kodun silinmiyor.",
+        "Her modülün tek bir sorumluluğu var."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        13
+      ],
+      "modul": 1
+    },
+    {
+      "no": 15,
+      "baslik": "Reaksiyon süresi oyunu",
+      "amac": "Rastgele 1–4 s bekledikten sonra LED yansın; oyuncu butona basınca tepki süresi ölçülsün. Erken basış faul sayılsın. Sonuç LED'lerle kademeli gösterilsin, en iyi skor debugger'da izlensin.",
+      "arastir": [
+        "sözde rastgele sayı üretimi",
+        "zaman ölçümü",
+        "durum makinesi"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Erken basış algılanıyor.",
+        "Ölçüm çözünürlüğü 1 ms; 10 denemenin sonuçları README'de."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        14
+      ],
+      "modul": 1
+    },
+    {
+      "no": 16,
+      "baslik": "Harici kesme (EXTI) ile buton",
+      "amac": "Butonu polling yerine EXTI kesmesiyle oku. Callback içinde yalnızca bayrak kur, LED'i ana döngüde değiştir.",
+      "arastir": [
+        "EXTI",
+        "NVIC",
+        "HAL_GPIO_EXTI_Callback",
+        "volatile"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN"
+      ],
+      "basari": [
+        "Ana döngü başka iş yaparken bile basış kaçmıyor.",
+        "Callback birkaç satırdan uzun değil."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        15
+      ],
+      "modul": 2
+    },
+    {
+      "no": 17,
+      "baslik": "Timer kesmesi",
+      "amac": "Bir timer'ı 2 Hz kesme üretecek şekilde ayarla ve LED'i kesmede değiştir. Prescaler ve ARR değerlerini kendin hesapla.",
+      "arastir": [
+        "timer clock'u",
+        "prescaler",
+        "ARR",
+        "update event",
+        "HAL_TIM_PeriodElapsedCallback"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "PSC ve ARR hesabı README dosyasında.",
+        "2 Hz timer kesmesinde 10 kesme aralığı 5 s sürer. Her kesmede LED tersleniyorsa LED tam çevrimi 1 Hz olur."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        16
+      ],
+      "modul": 2
+    },
+    {
+      "no": 18,
+      "baslik": "Clock ağacı",
+      "amac": "Sistem clock'unu iç osilatörden PLL ile kartının en yüksek hızına çıkar. Timer clock'unun nasıl değiştiğini hesapla ve 17. görevdeki timer aynı frekansta kalsın diye değerleri yeniden hesapla.",
+      "arastir": [
+        "HSI ve HSE",
+        "PLL",
+        "AHB/APB bölücüleri",
+        "APB timer clock çarpanı",
+        "flash wait state"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "SystemCoreClock beklenen değeri gösteriyor.",
+        "Timer frekansı clock değişiminden sonra da doğru."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Blue Pill'in (F103) en yüksek hızı 72 MHz.",
+      "tur": "ana",
+      "onkosul": [
+        17
+      ],
+      "modul": 2
+    },
+    {
+      "no": 19,
+      "baslik": "Kesme öncelikleri",
+      "amac": "Buton kesmesinin callback'ine kasıtlı olarak uzun bir bekleme koy ve timer kesmesiyle çalışan LED'in nasıl bozulduğunu gözle. Sonra öncelikleri değiştir ve farkı açıkla. En sonunda doğru çözümü uygula: kesmede bekleme yapma.",
+      "arastir": [
+        "NVIC öncelik grupları",
+        "preemption",
+        "kesme gecikmesi"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN"
+      ],
+      "basari": [
+        "Üç durumun gözlemi README'de: eşit öncelik, timer daha öncelikli, düzeltilmiş tasarım."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        18
+      ],
+      "modul": 2
+    },
+    {
+      "no": 20,
+      "baslik": "Kronometre",
+      "amac": "Timer kesmesiyle 1 ms çözünürlüklü kronometre yap. Bir buton başlatıp durdursun, uzun basış sıfırlasın. Süre debugger'da izlensin, her saniye bir LED yanıp sönsün.",
+      "arastir": [
+        "timer tabanlı zaman sayacı",
+        "HSI ve HSE doğruluğu",
+        "12. görevdeki buton olayları"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "1 dakikalık ölçümde telefon kronometresine göre fark raporlanmış; HSI ile HSE arasındaki farkı açıklıyorsun."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        19
+      ],
+      "modul": 2
+    },
+    {
+      "no": 21,
+      "baslik": "PWM ile LED parlaklığı",
+      "amac": "Bir timer kanalından PWM üret ve duty cycle ile LED parlaklığını ayarla (%10, %50, %90).",
+      "arastir": [
+        "PWM modu",
+        "CCR",
+        "duty cycle",
+        "PWM frekansı seçimi",
+        "pinin timer kanalı (alternatif fonksiyon)"
+      ],
+      "gerekenler": [
+        "KART",
+        "LED"
+      ],
+      "basari": [
+        "Üç seviye gözle ayırt ediliyor.",
+        "PWM frekansı ve hesabı README'de."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        20
+      ],
+      "modul": 2
+    },
+    {
+      "no": 22,
+      "baslik": "Nefes alan LED",
+      "amac": "Parlaklık 2 saniyede yumuşakça artıp azalsın. Duty, timer kesmesiyle sabit aralıklarla güncellensin.",
+      "arastir": [
+        "timer kesmesi ile güncelleme",
+        "rampa üretimi"
+      ],
+      "gerekenler": [
+        "KART",
+        "LED"
+      ],
+      "basari": [
+        "Ana döngü boşken animasyon devam ediyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        21
+      ],
+      "modul": 2
+    },
+    {
+      "no": 23,
+      "baslik": "Butonla parlaklık ve gama düzeltmesi",
+      "amac": "İki butonla parlaklığı 10 kademede artırıp azalt; sınırlarda dur. Doğrusal duty artışının göze doğrusal gelmediğini gözle ve gama düzeltmesi tablosu ekle.",
+      "arastir": [
+        "algısal parlaklık",
+        "gama düzeltmesi",
+        "lookup table"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Gama tablolu sürümde kademeler eşit aralıklı görünüyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        22
+      ],
+      "modul": 2
+    },
+    {
+      "no": 24,
+      "baslik": "Input capture ile frekans ölçümü",
+      "amac": "Bir timer'ın ürettiği PWM sinyalini kabloyla başka bir timer'ın input capture girişine bağla; frekansı ve duty'yi ölç.",
+      "arastir": [
+        "input capture",
+        "PWM input modu",
+        "sayaç taşması"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "100 Hz–10 kHz arasında 3 frekansta ölçüm hatası %1'in altında."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "Input capture'ın simüle edildiği dokümanda yazmıyor; Wokwi'nin clock generator parçasıyla dene.",
+      "tur": "ana",
+      "onkosul": [
+        23
+      ],
+      "modul": 2
+    },
+    {
+      "no": 25,
+      "baslik": "Geri sayım alarmı",
+      "amac": "Butonla 10'ar saniyelik adımlarla süre ayarla, uzun basışla geri sayımı başlat. Süre dolunca buzzer PWM ile ötsün ve LED yanıp sönsün; herhangi bir basış alarmı sustursun.",
+      "arastir": [
+        "buzzer ve PWM frekansı (ton)",
+        "durum makinesi"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "BUZ",
+        "LED"
+      ],
+      "basari": [
+        "Ayar, sayım ve alarm durumları README'deki diyagramla aynı çalışıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        24
+      ],
+      "modul": 2
+    },
+    {
+      "no": 26,
+      "baslik": "ADC ile potansiyometre",
+      "amac": "Potansiyometreyi ADC ile oku (tek dönüşüm, polling). Ham değeri mV'a çevir ve debugger'da izle.",
+      "arastir": [
+        "ADC çözünürlüğü",
+        "referans voltajı",
+        "örnekleme süresi",
+        "HAL_ADC_Start / PollForConversion"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT"
+      ],
+      "basari": [
+        "Uçlarda yaklaşık 0 ve 3300 mV görülüyor.",
+        "Multimetren varsa ölçümle karşılaştırılmış."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Wokwi'de ADC1'in yalnızca temel dönüşümü var.",
+      "tur": "ana",
+      "onkosul": [
+        25
+      ],
+      "modul": 2
+    },
+    {
+      "no": 27,
+      "baslik": "Potansiyometreyle parlaklık",
+      "amac": "Okunan ADC değerine göre PWM duty'yi ayarla. Uçlarda tam sönük ve tam parlak olsun.",
+      "arastir": [
+        "değer eşleme (mapping)",
+        "ADC gürültüsü"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT",
+        "LED"
+      ],
+      "basari": [
+        "Pot sabitken parlaklık titriyorsa nedenini README'de açıklıyorsun."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        26
+      ],
+      "modul": 2
+    },
+    {
+      "no": 28,
+      "baslik": "Hareketli ortalama filtresi",
+      "amac": "ADC'ye N örneklik hareketli ortalama uygula. Ham ve filtreli değeri karşılaştır; N = 4, 16 ve 64 için gürültüyü ve gecikmeyi kıyasla.",
+      "arastir": [
+        "hareketli ortalama",
+        "dairesel dizi",
+        "gecikme-gürültü dengesi",
+        "STM32CubeMonitor"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT"
+      ],
+      "basari": [
+        "Üç N değeri için gürültü (min-max) ve gecikme tablosu README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Simülasyondaki potansiyometre gürültüsüz; gürültüyü yazılımla ekle ya da gerçek kartta dene.",
+      "tur": "ana",
+      "onkosul": [
+        27
+      ],
+      "modul": 2
+    },
+    {
+      "no": 29,
+      "baslik": "Çok kanallı ADC ve dahili sensörler",
+      "amac": "İki potansiyometreyi ADC scan moduyla oku; birini parlaklık, diğerini yanıp sönme hızı için kullan. Ayrıca çipin dahili sıcaklık sensörünü ve Vrefint kanalını oku.",
+      "arastir": [
+        "scan mode",
+        "rank",
+        "dahili sıcaklık sensörü",
+        "Vrefint ile besleme voltajı hesabı"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT"
+      ],
+      "basari": [
+        "İki kontrol birbirini etkilemiyor.",
+        "Sıcaklık değeri makul; sensörün doğruluk sınırları README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de ADC kısmi; kanalları tek tek oku, dahili sensörleri gerçek kartta dene.",
+      "tur": "ana",
+      "onkosul": [
+        28
+      ],
+      "modul": 2
+    },
+    {
+      "no": 30,
+      "baslik": "Histerezisli termostat",
+      "amac": "Bir pot hedef sıcaklığı, diğer pot (ya da dahili sıcaklık sensörü) ölçülen sıcaklığı temsil etsin. Ölçüm hedefin altına düşünce “ısıtıcı” LED'i yansın, üstüne çıkınca sönsün. Önce histerezissiz, sonra histerezisli yap.",
+      "arastir": [
+        "aç-kapa (on-off) kontrol",
+        "histerezis",
+        "titreşim (chattering)"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT",
+        "LED"
+      ],
+      "basari": [
+        "Histerezissiz sürümde eşik civarındaki titreme gösteriliyor.",
+        "Histerezisli sürümde titreme yok."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        29
+      ],
+      "modul": 2
+    },
+    {
+      "no": 31,
+      "baslik": "UART ile ilk mesaj",
+      "amac": "UART'ı 115200 8N1 ayarla, saniyede bir “Merhaba” ve bir sayaç gönder; bilgisayarda seri terminalde gör.",
+      "arastir": [
+        "UART çerçevesi",
+        "baud rate",
+        "TX/RX çapraz bağlantı",
+        "ortak GND",
+        "seri terminal programları"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Terminalde mesajlar düzgün görünüyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        30
+      ],
+      "modul": 3
+    },
+    {
+      "no": 32,
+      "baslik": "printf yönlendirme",
+      "amac": "printf çıktısını UART'a yönlendir. ADC değerini ve voltajı (float) her 100 ms'de bir yazdır.",
+      "arastir": [
+        "_write / __io_putchar",
+        "newlib-nano ve float printf ayarı"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "POT"
+      ],
+      "basari": [
+        "Float değerler doğru yazdırılıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        31
+      ],
+      "modul": 3
+    },
+    {
+      "no": 33,
+      "baslik": "Karakter komutları",
+      "amac": "Bilgisayardan gelen tek karakterlik komutlarla LED'i yönet: '1' aç, '0' kapat, 't' değiştir. Önce polling ile oku.",
+      "arastir": [
+        "HAL_UART_Receive",
+        "polling",
+        "zaman aşımı parametresi"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "LED"
+      ],
+      "basari": [
+        "Komutlar çalışıyor.",
+        "Polling sırasında LED animasyonunun takıldığını gösteriyorsun."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        32
+      ],
+      "modul": 3
+    },
+    {
+      "no": 34,
+      "baslik": "Kesmeyle UART alımı",
+      "amac": "UART alımını kesmeyle yap. Komut beklerken LED animasyonu takılmadan devam etsin.",
+      "arastir": [
+        "HAL_UART_Receive_IT",
+        "RxCpltCallback",
+        "alımı yeniden başlatma"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "LED"
+      ],
+      "basari": [
+        "Animasyon hiç takılmıyor.",
+        "Hızlı yazılan 20 karakterin hepsi işleniyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        33
+      ],
+      "modul": 3
+    },
+    {
+      "no": 35,
+      "baslik": "Satır tabanlı komut arayüzü",
+      "amac": "Enter ile biten satır komutlarını işle: LED ON, LED OFF, PWM <0-100>, BLINK <ms>, HELP. Her komut “OK” ya da hata mesajı döndürsün.",
+      "arastir": [
+        "satır tamponu",
+        "strcmp / strncmp",
+        "strtol",
+        "komut tablosu"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "LED"
+      ],
+      "basari": [
+        "Bütün komutlar çalışıyor; HELP komut listesini veriyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        34
+      ],
+      "modul": 3
+    },
+    {
+      "no": 36,
+      "baslik": "Halka tampon (ring buffer)",
+      "amac": "Kesmede gelen baytları bir halka tampona yaz, ana döngüde oku. Tampon taşmalarını say ve raporla.",
+      "arastir": [
+        "halka tampon",
+        "head/tail",
+        "tek üretici-tek tüketici",
+        "volatile ve atomiklik"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Bilgisayardan art arda 1000 karakter gönderildiğinde kayıp yok ya da kayıp sayısı raporlanıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        35
+      ],
+      "modul": 3
+    },
+    {
+      "no": 37,
+      "baslik": "Sağlam komut ayrıştırıcı",
+      "amac": "Hatalı komutları, sınır dışı değerleri (PWM 150), çok uzun satırları ve boş satırları güvenli şekilde reddet. Sistem hiçbir girişle kilitlenmesin.",
+      "arastir": [
+        "girdi doğrulama",
+        "tampon taşması",
+        "savunmacı programlama"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "README'deki 10 kötü giriş testinin hepsinde sistem doğru hata mesajı veriyor ve çalışmaya devam ediyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        36
+      ],
+      "modul": 3
+    },
+    {
+      "no": 38,
+      "baslik": "Gönderim süresi ve DMA",
+      "amac": "115200 baud'da 100 baytlık bir mesajın gönderim süresini hesapla ve ölç. Bloklayan gönderimin ana döngüyü ne kadar yavaşlattığını göster. Sonra gönderimi DMA ile yap; önceki aktarım bitmeden yenisinin başlamasını engelle.",
+      "arastir": [
+        "UART bant genişliği",
+        "HAL_UART_Transmit_DMA",
+        "TxCpltCallback",
+        "meşgul bayrağı"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Bloklayan ve DMA'lı sürümde ana döngü süresi ölçülüp karşılaştırılmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DMA yok; süre ölçümünü simülasyonda, DMA kısmını gerçek kartta yap.",
+      "tur": "ana",
+      "onkosul": [
+        37
+      ],
+      "modul": 3
+    },
+    {
+      "no": 39,
+      "baslik": "Paket protokolü ve CRC",
+      "amac": "Başlangıç baytı, uzunluk, sıra numarası, veri ve CRC16 içeren bir paket formatı tasarla. Kart paketleri göndersin; Python tarafında çöz ve CRC'si bozuk paketleri reddet.",
+      "arastir": [
+        "çerçeveleme (framing)",
+        "CRC16",
+        "little-endian",
+        "sıra numarasıyla kayıp tespiti",
+        "Python struct modülü"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Paket formatı docs/ altında tablo halinde.",
+        "Python 10.000 paketin kaçının bozuk veya kayıp olduğunu raporluyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).",
+      "tur": "ana",
+      "onkosul": [
+        38
+      ],
+      "modul": 3
+    },
+    {
+      "no": 40,
+      "baslik": "Paketli uzaktan kumanda",
+      "amac": "Bilgisayardaki Python programı (ya da ikinci kart) paketle komut göndersin; kart LED'i yönetip durumunu paketle geri bildirsin. 500 ms boyunca geçerli paket gelmezse kart güvenli duruma geçsin (LED söner, hata LED'i yanar); bağlantı dönünce bunu bildirsin.",
+      "arastir": [
+        "zaman aşımı (timeout)",
+        "güvenli durum (fail-safe)",
+        "el sıkışma"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "PY/KART2",
+        "LED"
+      ],
+      "basari": [
+        "Bağlantı kesilince 500 ms içinde güvenli duruma geçiyor.",
+        "Bağlantı dönünce sistem kendiliğinden toparlanıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).",
+      "tur": "mini",
+      "onkosul": [
+        39
+      ],
+      "modul": 3
+    },
+    {
+      "no": 41,
+      "baslik": "ADC + DMA (dairesel tampon)",
+      "amac": "ADC'yi sürekli dönüşüm ve dairesel DMA ile çalıştır. Yarım ve tam tampon callback'lerinde tamponun bir yarısını işlerken diğer yarısı dolsun.",
+      "arastir": [
+        "DMA circular mode",
+        "HalfCplt / Cplt callback",
+        "çift tampon (ping-pong)"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT"
+      ],
+      "basari": [
+        "CPU, ADC'yi hiç beklemeden örneklerin ortalamasını hesaplıyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de DMA yok.",
+      "tur": "ana",
+      "onkosul": [
+        40
+      ],
+      "modul": 3
+    },
+    {
+      "no": 42,
+      "baslik": "Timer tetiklemeli örnekleme",
+      "amac": "ADC'yi timer tetiklemesiyle tam 1 kHz'de örnekle, DMA ile topla. Örnekleme frekansının gerçekten 1 kHz olduğunu doğrula.",
+      "arastir": [
+        "harici tetik (TRGO)",
+        "örnekleme teoremi"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT"
+      ],
+      "basari": [
+        "1 saniyede tam 1000 örnek toplanıyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DMA yok; timer kesmesinde ADC okuyarak dene, DMA kısmını gerçek kartta yap.",
+      "tur": "ana",
+      "onkosul": [
+        41
+      ],
+      "modul": 3
+    },
+    {
+      "no": 43,
+      "baslik": "Python ile canlı grafik ve kayıt",
+      "amac": "Seri porttan gelen verileri Python'da canlı çizdir ve CSV'ye kaydet. Okuma, çizim ve kayıt birbirini yavaşlatmasın.",
+      "arastir": [
+        "pyserial",
+        "matplotlib animasyonu veya pyqtgraph",
+        "thread ve kuyruk"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "100 Hz veri 5 dakika boyunca kayıpsız kaydediliyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).",
+      "tur": "ana",
+      "onkosul": [
+        42
+      ],
+      "modul": 3
+    },
+    {
+      "no": 44,
+      "baslik": "Flash'a ayar kaydetme",
+      "amac": "UART komutlarıyla değiştirilen ayarları SAVE komutuyla Flash'ın kullanılmayan bir sektörüne/sayfasına yaz; reset sonrası geri yükle. Kayda sihirli sayı ve CRC ekle; kayıt geçersizse varsayılanları kullan.",
+      "arastir": [
+        "Flash sektörleri / sayfaları",
+        "silme ve yazma",
+        "HAL_FLASH_Unlock",
+        "linker script ile alan ayırma"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Güç kesilip açıldığında ayarlar korunuyor.",
+        "Bozuk kayıt algılanıp varsayılana dönülüyor."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "Flash yazmanın simüle edildiği dokümanda yazmıyor; gerçek kartta doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        43
+      ],
+      "modul": 3
+    },
+    {
+      "no": 45,
+      "baslik": "Mini osiloskop",
+      "amac": "Timer tetiklemeli ADC ile pot sinyalini örnekle, paketli binary formatta gönder ve Python'da canlı osiloskop gibi göster. Örnekleme hızı komutla değişsin (100 Hz–5 kHz) ve Flash'ta saklansın.",
+      "arastir": [
+        "bant genişliği hesabı",
+        "39. görevdeki paket protokolü",
+        "binary veri"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "5 kHz'de veri kaybı yok ya da kayıp oranı ölçülmüş.",
+        "Örnekleme hızı reset sonrası korunuyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DMA yok; örneklemeyi timer kesmesinde yap.",
+      "tur": "mini",
+      "onkosul": [
+        44
+      ],
+      "modul": 3
+    },
+    {
+      "no": 46,
+      "baslik": "I²C hat tarama",
+      "amac": "I²C hattındaki bütün adresleri dene ve cevap veren cihazları UART'tan listele.",
+      "arastir": [
+        "I²C adresleme (7 bit)",
+        "ACK/NACK",
+        "pull-up dirençleri",
+        "HAL_I2C_IsDeviceReady"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU/OLED",
+        "SERI"
+      ],
+      "basari": [
+        "Bağlı cihazların adresleri doğru listeleniyor; cihaz çıkarılınca listeden düşüyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        45
+      ],
+      "modul": 4
+    },
+    {
+      "no": 47,
+      "baslik": "Kimlik register'ı",
+      "amac": "IMU'nun kimlik (WHO_AM_I) register'ını oku ve datasheet'teki beklenen değerle karşılaştır. Uyuşmazlık ya da iletişim hatasında anlaşılır bir hata mesajı ver.",
+      "arastir": [
+        "datasheet register haritası",
+        "HAL_I2C_Mem_Read"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "Doğru değer okunuyor.",
+        "Bağlantı yokken hata mesajı geliyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Wokwi'de MPU6050 kullan.",
+      "tur": "ana",
+      "onkosul": [
+        46
+      ],
+      "modul": 4
+    },
+    {
+      "no": 48,
+      "baslik": "Register okuma-yazma katmanı",
+      "amac": "I²C üzerinde read_reg, write_reg ve read_burst fonksiyonları yaz; her biri hata kodu döndürsün. Bir konfigürasyon register'ına yazıp geri okuyarak doğrula.",
+      "arastir": [
+        "hata kodu tasarımı",
+        "burst okuma",
+        "adres otomatik artırma"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "Yaz-oku doğrulaması geçiyor.",
+        "Hata kodları README'de listelenmiş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        47
+      ],
+      "modul": 4
+    },
+    {
+      "no": 49,
+      "baslik": "SPI ile sensör",
+      "amac": "Bir sensörü SPI ile bağla. Chip select'i yazılımla yönet, SPI modunu datasheet'e göre seç ve kimlik register'ını oku.",
+      "arastir": [
+        "SPI",
+        "CPOL / CPHA",
+        "chip select",
+        "okuma bitinin ayarlanması"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "Kimlik doğru okunuyor.",
+        "Yanlış SPI modunda neden okunamadığını açıklıyorsun."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de SPI'lı IMU yok; SPI'yi listedeki başka bir SPI parçasıyla ya da custom chip ile dene.",
+      "tur": "ana",
+      "onkosul": [
+        48
+      ],
+      "modul": 4
+    },
+    {
+      "no": 50,
+      "baslik": "Eğim LED'leri",
+      "amac": "İvmeölçerin X ve Y eksenlerini oku, datasheet ölçeğiyle g birimine çevir. Kart hangi yöne eğilirse o yöndeki LED, eğimle orantılı parlaklıkta yansın.",
+      "arastir": [
+        "ham veri → g dönüşümü",
+        "ölçek katsayısı",
+        "işaretli 16 bit veri"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "LED"
+      ],
+      "basari": [
+        "Düz dururken z ≈ 1 g, x ve y ≈ 0.",
+        "Dört yön doğru LED'i yakıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Wokwi'de MPU6050'nin değerlerini elle değiştirerek dene.",
+      "tur": "mini",
+      "onkosul": [
+        49
+      ],
+      "modul": 4
+    },
+    {
+      "no": 51,
+      "baslik": "Sensör konfigürasyonu",
+      "amac": "Sensörün çıkış veri hızını (ODR), ölçüm aralığını ve dahili filtresini register'lardan ayarla. Farklı ayarların veriye etkisini kaydet.",
+      "arastir": [
+        "ODR",
+        "ölçüm aralığı ve çözünürlük",
+        "dahili alçak geçiren filtre"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "İki farklı ölçüm aralığında aynı eğimin ham değerlerinin neden farklı olduğunu gösteriyorsun."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "Wokwi dokümanı MPU6050'de hangi ayar register'larının simüle edildiğini yazmıyor.",
+      "tur": "ana",
+      "onkosul": [
+        50
+      ],
+      "modul": 4
+    },
+    {
+      "no": 52,
+      "baslik": "Data-ready kesmesi",
+      "amac": "Sensörün kesme (INT) pinini EXTI'ye bağla; her yeni veri hazır olduğunda oku.",
+      "arastir": [
+        "data-ready interrupt",
+        "kesme pini konfigürasyonu",
+        "latch / pulse modu"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "Okuma sayısı sensörün ODR'si ile birebir uyuşuyor."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "Wokwi'deki MPU6050'nin INT pininin çalışıp çalışmadığı dokümanda yazmıyor.",
+      "tur": "ana",
+      "onkosul": [
+        51
+      ],
+      "modul": 4
+    },
+    {
+      "no": 53,
+      "baslik": "Bloklamasız sensör okuma",
+      "amac": "Sensör okumasını kesme ya da DMA tabanlı I²C/SPI ile yap; okuma sürerken ana döngü çalışmaya devam etsin.",
+      "arastir": [
+        "HAL_I2C_Mem_Read_IT / _DMA",
+        "callback zinciri"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "Okuma sırasında ana döngünün takılmadığı ölçümle gösterilmiş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de kesmeli sürümü yap; DMA'lı sürüm gerçek kartta.",
+      "tur": "ana",
+      "onkosul": [
+        52
+      ],
+      "modul": 4
+    },
+    {
+      "no": 54,
+      "baslik": "Bus'tan bağımsız sürücü",
+      "amac": "Sensör sürücünü (başlatma, konfigürasyon, okuma) I²C ve SPI'yı aynı arayüzle kullanabilecek şekilde düzenle. HAL çağrıları tek bir port dosyasında kalsın.",
+      "arastir": [
+        "sürücü katmanları",
+        "fonksiyon işaretçisi",
+        "port/HAL soyutlaması"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "Bus değiştirmek için yalnızca başlatma satırı değişiyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        53
+      ],
+      "modul": 4
+    },
+    {
+      "no": 55,
+      "baslik": "Veri kaydedici",
+      "amac": "Sensörü sabit örnekleme hızında oku, zaman damgasıyla paketleyip gönder; Python 1 dakikalık kaydı CSV'ye yazıp grafiğini çizsin.",
+      "arastir": [
+        "sabit örnekleme",
+        "zaman damgası",
+        "veri kaydı"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Zaman damgaları arasındaki fark sabit.",
+        "Kayıp örnek sayısı raporlanıyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).",
+      "tur": "mini",
+      "onkosul": [
+        54
+      ],
+      "modul": 4
+    },
+    {
+      "no": 56,
+      "baslik": "OLED ekran sürücüsü",
+      "amac": "SSD1306 OLED için kendi minimal sürücünü yaz: başlatma, çerçeve tamponu, piksel, çizgi ve metin.",
+      "arastir": [
+        "SSD1306 komut seti",
+        "frame buffer",
+        "font tablosu"
+      ],
+      "gerekenler": [
+        "KART",
+        "OLED"
+      ],
+      "basari": [
+        "Ekranda metin ve çizgi doğru konumda."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        55
+      ],
+      "modul": 4
+    },
+    {
+      "no": 57,
+      "baslik": "Ekranda canlı veri",
+      "amac": "Sensör değerlerini sayısal olarak ve kayan çizgi grafik olarak ekranda göster.",
+      "arastir": [
+        "ekran tazeleme hızı",
+        "kayan grafik"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "OLED"
+      ],
+      "basari": [
+        "Ekran en az 10 Hz'de güncelleniyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        56
+      ],
+      "modul": 4
+    },
+    {
+      "no": 58,
+      "baslik": "DMA ile ekran güncelleme",
+      "amac": "Ekran tamponunu DMA ile gönder; aktarım sürerken sensör okuma işleri aksamasın. Güncelleme süresini önce ve sonra ölç.",
+      "arastir": [
+        "I²C DMA",
+        "çift tampon"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "OLED"
+      ],
+      "basari": [
+        "Ana döngü süresindeki iyileşme ölçülmüş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DMA yok; kesmeli gönderimle dene, DMA'lı sürümü gerçek kartta yap.",
+      "tur": "ana",
+      "onkosul": [
+        57
+      ],
+      "modul": 4
+    },
+    {
+      "no": 59,
+      "baslik": "Bağlantı hatasından kurtulma",
+      "amac": "Çalışırken sensör kablosu çıkarıldığında sistem kilitlenmesin, hata göstersin. Kablo takılınca sensörü yeniden başlatıp devam etsin.",
+      "arastir": [
+        "I²C zaman aşımı",
+        "hat kurtarma",
+        "yeniden başlatma stratejisi"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "10 kez çıkar-tak testinde sistem her seferinde toparlanıyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Kablo çıkarma testini gerçek kartta yap.",
+      "tur": "ana",
+      "onkosul": [
+        58
+      ],
+      "modul": 4
+    },
+    {
+      "no": 60,
+      "baslik": "Dijital su terazisi",
+      "amac": "İvmeölçerden roll ve pitch açılarını hesapla, OLED'de sayısal değer ve kabarcık grafiğiyle göster. Butonla mevcut konumu sıfır kabul et ve bu ofseti Flash'a kaydet.",
+      "arastir": [
+        "atan2 ile eğim",
+        "ofset",
+        "44. görevdeki Flash kaydı"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "OLED",
+        "BTN"
+      ],
+      "basari": [
+        "Düz zeminde ±1° içinde sıfır.",
+        "Ofset reset sonrası korunuyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Flash kaydını gerçek kartta doğrula.",
+      "tur": "mini",
+      "onkosul": [
+        59
+      ],
+      "modul": 4
+    },
+    {
+      "no": 61,
+      "baslik": "DC motor sürme",
+      "amac": "Motor sürücüyle motoru çalıştır: PWM ile gücü, GPIO ile yönü kontrol et. UART komutlarıyla duty ve yön değiştir.",
+      "arastir": [
+        "H köprüsü",
+        "motor sürücü pinleri",
+        "motor beslemesini kart beslemesinden ayırma",
+        "ortak GND"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI"
+      ],
+      "basari": [
+        "İki yönde %0–100 arası çalışıyor.",
+        "Bağlantı şeması README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi yolunda önce 069 modelini kur. PWM/yön çıkışını modelle doğrula. Gerçek H köprüsü ve elektriksel motor davranışı test edilmiş sayılmaz.",
+      "tur": "ana",
+      "onkosul": [
+        60,
+        69
+      ],
+      "modul": 5
+    },
+    {
+      "no": 62,
+      "baslik": "Rampa",
+      "amac": "Kalkış, duruş ve yön değişimini rampalı yap (ör. %100'e 500 ms'de çık). Ani yön değişiminin neden zararlı olduğunu araştır.",
+      "arastir": [
+        "eğim sınırlayıcı (slew rate limiter)",
+        "ters EMK"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR"
+      ],
+      "basari": [
+        "Ani komutlarda bile duty değişim hızı sınırlı."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Rampa mantığını simülasyonda LED/PWM ile dene; motor davranışını gerçek kartta gözle.",
+      "tur": "ana",
+      "onkosul": [
+        61
+      ],
+      "modul": 5
+    },
+    {
+      "no": 63,
+      "baslik": "PWM frekansı ve ölü bölge",
+      "amac": "Motoru 1 kHz ve 20 kHz PWM ile çalıştır; ses ve düşük hız davranışını karşılaştır. Motorun dönmeye başladığı en düşük duty'yi (ölü bölge) iki yönde ölç.",
+      "arastir": [
+        "PWM frekansı ve motor endüktansı",
+        "statik sürtünme",
+        "ölü bölge"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR"
+      ],
+      "basari": [
+        "Ölü bölge değerleri ve frekans gözlemleri README'de."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        62
+      ],
+      "modul": 5
+    },
+    {
+      "no": 64,
+      "baslik": "Encoder ile konum",
+      "amac": "Encoder'ı timer encoder moduyla oku; milin konumunu (derece) ve yönünü hesapla. 16 bit sayaç taşmasını yöneterek 32 bit konum tut.",
+      "arastir": [
+        "quadrature encoder",
+        "timer encoder modu",
+        "×4 sayım",
+        "CPR ve dişli oranı",
+        "sayaç taşması"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR"
+      ],
+      "basari": [
+        "Mil 10 tur çevrilince konum 3600° civarında.",
+        "Sayaç taşmasında konum sıçramıyor."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "Önce KY-040 veya kodlanmış A/B üreteciyle timer encoder modunu sına. Destek yoksa EXTI ile yazılımsal sayım alternatifini raporla. Timer encoder görevi bu alternatifle tamamlandı sayılmaz.",
+      "tur": "ana",
+      "onkosul": [
+        63
+      ],
+      "modul": 5
+    },
+    {
+      "no": 65,
+      "baslik": "Motor test tezgâhı",
+      "amac": "UART komutlarıyla motoru sür (duty, yön, rampa), encoder konumunu canlı gönder ve Python'da konum grafiğini çiz.",
+      "arastir": [
+        "61–64. görevlerin birleşimi",
+        "39. görevdeki paket protokolü"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Komut ve konum aynı grafikte izlenebiliyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        64
+      ],
+      "modul": 5
+    },
+    {
+      "no": 66,
+      "baslik": "RPM hesabı",
+      "amac": "Encoder'dan RPM'i sabit aralıklarla (timer kesmesi) hesapla. Düşük hızda çözünürlüğün neden bozulduğunu göster ve darbeler arası süre ölçümünü alternatif olarak dene.",
+      "arastir": [
+        "frekans ölçümü ve periyot ölçümü",
+        "nicemleme (quantization) hatası"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR",
+        "SERI"
+      ],
+      "basari": [
+        "İki yöntemin düşük ve yüksek hızdaki gürültüsü karşılaştırılmış."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        65
+      ],
+      "modul": 5
+    },
+    {
+      "no": 67,
+      "baslik": "Hız filtresi",
+      "amac": "RPM sinyaline hareketli ortalama ve birinci dereceden alçak geçiren filtre uygula. Gürültüyü ve gecikmeyi karşılaştır.",
+      "arastir": [
+        "IIR alçak geçiren filtre",
+        "kesim frekansı",
+        "faz gecikmesi"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Seçtiğin filtrenin gerekçesi ölçümle birlikte README'de."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        66
+      ],
+      "modul": 5
+    },
+    {
+      "no": 68,
+      "baslik": "Motoru tanı",
+      "amac": "Açık çevrimde duty → kararlı hız eğrisini çıkar. Basamak (step) girişinde hız cevabını kaydet ve birinci dereceden modelin kazancını ve zaman sabitini bul.",
+      "arastir": [
+        "basamak cevabı",
+        "birinci dereceden sistem",
+        "zaman sabiti (%63 kuralı)"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Model parametreleri ve grafikler README'de."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Motoru olmayan, motorlu bir ekip arkadaşının kaydını kullanabilir.",
+      "tur": "ana",
+      "onkosul": [
+        67
+      ],
+      "modul": 5
+    },
+    {
+      "no": 69,
+      "baslik": "Sanal motor ve encoder üreteci",
+      "amac": "Wokwi için birinci dereceden motor modeli ve A/B quadrature üreteci hazırla. Parametreleri kaynaklı veya açıkça eğitim varsayımı olarak belirtilmiş değerlerden seç. PWM ve yönü oku, hız/konum hesapla, custom chip çıkışlarından A/B darbeleri üret. Önce sabit hız ve yön testini yap, sonra motor modelini bağla. 068 ölçümleri elde edilince parametreleri güncelle.",
+      "arastir": [
+        "ayrık zaman benzetimi",
+        "Euler yöntemi",
+        "quadrature sinyal üretimi (Gray kodu)",
+        "kesme frekansı ile simüle edilebilecek en yüksek hız ilişkisi"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "A/B sırası iki yönde doğrulanmış ve tur başına sayım tanımı yazılmış.",
+        "Belirlenen darbe sayısında sayıcı beklenen konuma ulaşıyor.",
+        "STM32 timer encoder desteği ayrı test edilmiş; destek yoksa yazılımsal sayım açıkça belirtilmiş.",
+        "Model adımı, azami darbe hızı ve motor parametreleri raporlanmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de modeli custom chip olarak da yazabilirsin; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        30,
+        40
+      ],
+      "modul": 5,
+      "not": "Wokwi yolunda 060 sonrasında 069 yapılır, sonra 061 ile devam edilir. Hazır çalışan encoder modeli bu pakete dahil değildir."
+    },
+    {
+      "no": 70,
+      "baslik": "P ile hız sabitleyici",
+      "amac": "Yalnızca oransal (P) kontrolle hedef hızı tut. Hedef UART'tan gelsin, hedef ve ölçülen hız canlı çizilsin. Kalıcı hatayı gözle ve nedenini açıkla.",
+      "arastir": [
+        "kapalı çevrim kontrol",
+        "oransal kazanç",
+        "kalıcı hata (steady-state error)"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Üç farklı Kp için kalıcı hata ve salınım tablosu README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "mini",
+      "onkosul": [
+        69
+      ],
+      "modul": 5
+    },
+    {
+      "no": 71,
+      "baslik": "PI hız kontrolü",
+      "amac": "İntegral terimi ekle; farklı hedef hızları kalıcı hatasız takip et. Başlangıç kazançlarını modelinden tahmin et, sonra ince ayar yap.",
+      "arastir": [
+        "PI kontrol",
+        "ayrık zamanda integral",
+        "örnekleme süresi"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Basamak cevabında kalıcı hata yaklaşık 0.",
+        "Aşım ve oturma süresi ölçülmüş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        70
+      ],
+      "modul": 5
+    },
+    {
+      "no": 72,
+      "baslik": "Anti-windup",
+      "amac": "Çıkışa sınır koy ve ulaşılamayacak bir hız iste. İntegral birikmesinin toparlanmayı nasıl bozduğunu göster, sonra anti-windup ekleyip karşılaştır.",
+      "arastir": [
+        "integral windup",
+        "clamping",
+        "back-calculation"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Anti-windup öncesi ve sonrası grafikler yan yana."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        71
+      ],
+      "modul": 5
+    },
+    {
+      "no": 73,
+      "baslik": "Bozucu etkiye karşı",
+      "amac": "Motor dönerken mile yük bindir (gerçek motorda elle hafif fren, sanal motorda yük torku). Hızın ne kadar düştüğünü ve ne kadar sürede toparlandığını ölç.",
+      "arastir": [
+        "bozucu etki bastırma",
+        "integral teriminin rolü"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "P ve PI kontrolün yük altındaki davranışı karşılaştırılmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        72
+      ],
+      "modul": 5
+    },
+    {
+      "no": 74,
+      "baslik": "Kaskat konum kontrolü",
+      "amac": "Dışta konum (P veya PD), içte hız (PI) kontrolü kur ve motor milini hedef açıya götür. Aşımı, oturma süresini ve kalıcı hatayı ölç.",
+      "arastir": [
+        "kaskat kontrol",
+        "iç döngünün dış döngüden hızlı olması",
+        "döngü frekansları"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "90° hedefindeki ölçümler README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        73
+      ],
+      "modul": 5
+    },
+    {
+      "no": 75,
+      "baslik": "Konum servosu",
+      "amac": "Hedef açıyı potansiyometreden ya da UART'tan al; motor hedefe gitsin. Hedef, gerçek konum ve hata Python'da canlı çizilsin. Başarı ölçütlerini (aşım, kalıcı hata) kendin belirle ve sağladığını göster.",
+      "arastir": [
+        "gereksinim belirleme",
+        "test senaryosu"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "POT",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Kendi koyduğun ölçütler ve ölçüm sonuçları README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "mini",
+      "onkosul": [
+        74
+      ],
+      "modul": 5
+    },
+    {
+      "no": 76,
+      "baslik": "Jiroskop ve bias",
+      "amac": "Jiroskobu oku ve rad/s'ye çevir. Kart hareketsizken birkaç saniyelik ortalamayla sıfır hız ofsetini (bias) bul ve çıkar.",
+      "arastir": [
+        "jiroskop ölçek katsayısı",
+        "bias",
+        "ortalama ile kalibrasyon"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "Bias çıkarılınca hareketsizken açısal hız yaklaşık 0."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ana",
+      "onkosul": [
+        75
+      ],
+      "modul": 6
+    },
+    {
+      "no": 77,
+      "baslik": "Açı entegrasyonu ve kayma",
+      "amac": "Jiroskop verisini zamana göre entegre ederek açı hesapla. Kartı 5 dakika hareketsiz bırak ve açının ne kadar kaydığını kaydet.",
+      "arastir": [
+        "sayısal entegrasyon",
+        "kayma (drift)",
+        "rastgele yürüyüş"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Kayma grafiği ve dakikada kaç derece kaydığı README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ana",
+      "onkosul": [
+        76
+      ],
+      "modul": 6
+    },
+    {
+      "no": 78,
+      "baslik": "İvmeölçerden açı",
+      "amac": "İvmeölçerden roll ve pitch hesapla. Kartı sallayınca açının neden bozulduğunu göster.",
+      "arastir": [
+        "yerçekimi vektörü",
+        "doğrusal ivmenin etkisi"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Durağan ve hareketli durum grafikleri karşılaştırılmış; nedeni açıklanmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ana",
+      "onkosul": [
+        77
+      ],
+      "modul": 6
+    },
+    {
+      "no": 79,
+      "baslik": "İvmeölçer kalibrasyonu",
+      "amac": "Altı pozisyon yöntemiyle her eksenin ofsetini ve ölçek hatasını bul. Kalibrasyon katsayılarını Flash'a kaydet.",
+      "arastir": [
+        "6 pozisyon kalibrasyonu",
+        "ofset ve ölçek hatası",
+        "yerçekimi referansı"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "Kalibrasyon sonrası her yüzde |a| yaklaşık 1 g (±%2)."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Kalibrasyon gerçek sensör hatası gerektirir.",
+      "tur": "ana",
+      "onkosul": [
+        78
+      ],
+      "modul": 6
+    },
+    {
+      "no": 80,
+      "baslik": "Kalibrasyon sihirbazı",
+      "amac": "UART'tan ya da OLED'den yönlendirmeli bir kalibrasyon akışı yap: “Kartı yüzü yukarı koy, butona bas” gibi adımlarla ivmeölçer ve jiroskop kalibrasyonunu tamamla, sonuçları kaydet.",
+      "arastir": [
+        "kullanıcı akışı tasarımı",
+        "durum makinesi",
+        "Flash kaydı"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "BTN",
+        "SERI/OLED"
+      ],
+      "basari": [
+        "Kalibrasyonu bilmeyen biri yalnızca talimatlarla tamamlayabiliyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Akışı simülasyonda geliştir, kalibrasyonu gerçek kartta yap.",
+      "tur": "mini",
+      "onkosul": [
+        79
+      ],
+      "modul": 6
+    },
+    {
+      "no": 81,
+      "baslik": "Sabit örnekleme ve dt",
+      "amac": "IMU'yu sabit frekansta (ör. 200 Hz) oku ve her adımın dt'sini ölç. Değişken dt'nin entegrasyona etkisini göster.",
+      "arastir": [
+        "örnekleme jitter'ı",
+        "dt ölçümü",
+        "DWT cycle sayacı"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "dt'nin en küçük, ortalama ve en büyük değerleri raporlanmış."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        80
+      ],
+      "modul": 6
+    },
+    {
+      "no": 82,
+      "baslik": "Complementary filtre",
+      "amac": "Jiroskop ve ivmeölçer açılarını complementary filtreyle birleştir. Farklı katsayılarla dene; kartı eğerek canlı grafikte izle.",
+      "arastir": [
+        "complementary filtre",
+        "zaman sabiti ile katsayı ilişkisi"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Seçtiğin katsayının gerekçesi ve grafikler README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ana",
+      "onkosul": [
+        81
+      ],
+      "modul": 6
+    },
+    {
+      "no": 83,
+      "baslik": "Kalman filtresi",
+      "amac": "Açıyı ve jiroskop bias'ını kestiren iki durumlu Kalman filtresini yaz. Q ve R değerlerinin anlamını açıkla ve ayarla.",
+      "arastir": [
+        "Kalman tahmin/düzeltme adımları",
+        "kovaryans",
+        "Q ve R"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Filtre kartta 200 Hz'de çalışıyor.",
+        "Bias kestirimi zamanla oturuyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ana",
+      "onkosul": [
+        82
+      ],
+      "modul": 6
+    },
+    {
+      "no": 84,
+      "baslik": "Filtreleri karşılaştır",
+      "amac": "Aynı ham sensör kaydını hem complementary hem Kalman filtresinden geçir. Filtre kodunu bilgisayarda da derleyip kayıt dosyası üzerinde çalıştır; kart ve bilgisayar aynı sonucu versin.",
+      "arastir": [
+        "host üzerinde derleme",
+        "tekrarlanabilir deney"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Karşılaştırma tablosu: gecikme, gürültü, kayma.",
+        "Kart ve bilgisayar sonuçları örnek bazında uyuşuyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ana",
+      "onkosul": [
+        83
+      ],
+      "modul": 6
+    },
+    {
+      "no": 85,
+      "baslik": "Yapay ufuk",
+      "amac": "Roll ve pitch'i OLED'de uçak göstergesindeki gibi yapay ufuk olarak göster (ya da Python'da 3D küp). Güncelleme en az 20 Hz olsun.",
+      "arastir": [
+        "çizgi döndürme",
+        "ekran tazeleme"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "OLED/PY"
+      ],
+      "basari": [
+        "Kart eğildiğinde gösterge gecikmesiz ve doğru yönde dönüyor."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        84
+      ],
+      "modul": 6
+    },
+    {
+      "no": 86,
+      "baslik": "CAN loopback",
+      "amac": "CAN çevre birimini loopback modunda, transceiver olmadan tek kartta çalıştır: mesaj gönder, kendi mesajını al. Filtreyi yalnızca belirli ID'leri alacak şekilde ayarla.",
+      "arastir": [
+        "CAN çerçevesi",
+        "standart ID",
+        "DLC",
+        "bit timing",
+        "filtre bankları",
+        "loopback modu"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "Filtreye uyan ID'ler alınıyor, diğerleri alınmıyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "ana",
+      "onkosul": [
+        85
+      ],
+      "modul": 7
+    },
+    {
+      "no": 87,
+      "baslik": "İki kart arası CAN",
+      "amac": "İki kartı transceiver'larla bağla, 500 kbit/s'de mesaj alışverişi yap. Bit timing ayarını hesapla; hattın iki ucuna 120 Ω sonlandırma direnci koy.",
+      "arastir": [
+        "CAN fiziksel katmanı",
+        "CANH / CANL",
+        "sonlandırma",
+        "prescaler ve zaman segmentleri"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN"
+      ],
+      "basari": [
+        "10.000 mesajda kayıp yok."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "ana",
+      "onkosul": [
+        86
+      ],
+      "modul": 7
+    },
+    {
+      "no": 88,
+      "baslik": "CAN mesaj tasarımı",
+      "amac": "Periyodik (10 ms ve 100 ms) ve olay tabanlı mesajlar tasarla. Her mesajın ID'si, periyodu, içeriği, ölçeği ve birimi docs/ altında tablo halinde olsun.",
+      "arastir": [
+        "mesaj kataloğu",
+        "DBC dosyası mantığı",
+        "sinyal ölçekleme"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN"
+      ],
+      "basari": [
+        "Tablodaki her mesaj gerçekten o periyotta yayınlanıyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "ana",
+      "onkosul": [
+        87
+      ],
+      "modul": 7
+    },
+    {
+      "no": 89,
+      "baslik": "CAN hata durumları",
+      "amac": "Çalışırken CAN kablosunu çıkar ve sonlandırmayı kaldır. Hata sayaçlarını (TEC/REC) ve bus-off durumunu izle, otomatik kurtarmayı ayarla.",
+      "arastir": [
+        "error active / passive",
+        "bus-off",
+        "otomatik bus-off yönetimi"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN"
+      ],
+      "basari": [
+        "Her senaryoda hata sayaçlarının davranışı kaydedilmiş.",
+        "Bağlantı dönünce haberleşme kendiliğinden düzeliyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "ana",
+      "onkosul": [
+        88
+      ],
+      "modul": 7
+    },
+    {
+      "no": 90,
+      "baslik": "CAN ile uzaktan motor",
+      "amac": "Bir kart hedef hızı/konumu CAN'den göndersin; diğer kart motoru sürüp ölçülen konumu ve hızı geri göndersin. Gönderen kart sonuçları UART'tan bilgisayara aktarsın.",
+      "arastir": [
+        "dağıtık kontrol",
+        "uçtan uca gecikme"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN",
+        "MOTOR/SANAL",
+        "SERI"
+      ],
+      "basari": [
+        "Hedef ve ölçülen konum aynı grafikte.",
+        "Uçtan uca gecikme ölçülmüş."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "mini",
+      "onkosul": [
+        89
+      ],
+      "modul": 7
+    },
+    {
+      "no": 91,
+      "baslik": "Watchdog",
+      "amac": "Bağımsız watchdog'u (IWDG) etkinleştir; ana döngü takılırsa kart resetlensin. Açılışta reset sebebini okuyup UART'tan raporla.",
+      "arastir": [
+        "IWDG ve WWDG farkı",
+        "zaman aşımı hesabı",
+        "reset sebebi bayrakları"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Kasıtlı sonsuz döngüde reset oluyor ve sebep doğru raporlanıyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de IWDG yok, WWDG var; IWDG'yi gerçek kartta dene.",
+      "tur": "ana",
+      "onkosul": [
+        90
+      ],
+      "modul": 7
+    },
+    {
+      "no": 92,
+      "baslik": "Hata yönetimi durum makinesi",
+      "amac": "Motor sistemine INIT, READY, RUN, FAULT ve ESTOP durumları ekle. Acil durdurma butonunu, encoder hatasını (komut var ama sayım yok), sensör hatasını ve haberleşme kaybını işle. FAULT'tan çıkış bilinçli bir komut gerektirsin.",
+      "arastir": [
+        "güvenlik durum makinesi",
+        "hata kodları",
+        "fail-safe tasarım"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "BTN",
+        "SERI"
+      ],
+      "basari": [
+        "Her hata senaryosu tetiklenip doğru duruma geçildiği README'deki tabloda."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ana",
+      "onkosul": [
+        91
+      ],
+      "modul": 7
+    },
+    {
+      "no": 93,
+      "baslik": "HardFault analizi",
+      "amac": "Kasıtlı hata oluştur (NULL işaretçi, hizalanmamış erişim, sıfıra bölme tuzağı). HardFault handler'da yığından PC ve LR değerlerini kaydet; hatanın kaynağını bulup açıkla.",
+      "arastir": [
+        "Cortex-M exception modeli",
+        "yığına kaydedilen register'lar",
+        "CFSR / HFSR",
+        ".map dosyasıyla adres eşleme"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Her hata için hatalı satır PC değerinden bulunmuş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        92
+      ],
+      "modul": 7
+    },
+    {
+      "no": 94,
+      "baslik": "FreeRTOS ile ilk görevler",
+      "amac": "CubeMX'te FreeRTOS'u etkinleştir; LED, buton ve UART işlerini üç ayrı görevde (task) çalıştır. vTaskDelay ile vTaskDelayUntil arasındaki farkı ölç.",
+      "arastir": [
+        "görev (task)",
+        "öncelik",
+        "zamanlayıcı (scheduler)",
+        "stack boyutu",
+        "tick"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "SERI"
+      ],
+      "basari": [
+        "Periyodik görevin periyodu ölçülmüş; iki gecikme fonksiyonunun farkı gösterilmiş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ana",
+      "onkosul": [
+        93
+      ],
+      "modul": 7
+    },
+    {
+      "no": 95,
+      "baslik": "Çok görevli veri sistemi",
+      "amac": "Sensör görevi → kuyruk → filtre görevi → kuyruk → haberleşme görevi zinciri kur. UART'ı mutex ile paylaş. Her görevin çalışma süresini ve stack kullanımını raporla.",
+      "arastir": [
+        "queue",
+        "mutex",
+        "stack high water mark"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI"
+      ],
+      "basari": [
+        "Veri kaybı yok.",
+        "Stack kullanımları raporlanmış."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "mini",
+      "onkosul": [
+        94
+      ],
+      "modul": 7
+    },
+    {
+      "no": 96,
+      "baslik": "Gereksinimler ve mimari",
+      "amac": "Sistemi kodlamadan önce tasarla: düğümler, UART mesaj tablosu ve ilerideki CAN eşlemesi, durum makineleri, zamanlama (hangi döngü kaç Hz) ve güvenlik gereksinimleri (ör. “kumanda mesajı 100 ms gelmezse aktüatör güvenli duruma geçer”). Test planını şimdiden yaz.",
+      "arastir": [
+        "gereksinim yazımı",
+        "blok diyagram",
+        "zamanlama bütçesi",
+        "test planı"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "docs/bitirme/ altında mimari diyagramı, mesaj tablosu, gereksinim listesi ve test planı var."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "bitirme",
+      "onkosul": [
+        95
+      ],
+      "modul": 8
+    },
+    {
+      "no": 97,
+      "baslik": "Kumanda düğümü",
+      "amac": "IMU ve Kalman filtresiyle direksiyon açısını üret, ölü bölge ve hız sınırı (rate limit) uygula, 100 Hz'de Wokwi sürümünde UART üzerinden gönder. Durumu OLED'de göster.",
+      "arastir": [
+        "83. görevdeki Kalman",
+        "rate limiter",
+        "periyodik CAN mesajı"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "OLED"
+      ],
+      "basari": [
+        "Mesaj periyodu ve açı çözünürlüğü ölçülmüş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "UART ve sanal motorla başlangıç sürümü. CAN donanım doğrulaması ayrı tutulur.",
+      "tur": "bitirme",
+      "onkosul": [
+        96
+      ],
+      "modul": 8
+    },
+    {
+      "no": 98,
+      "baslik": "Aktüatör düğümü",
+      "amac": "Wokwi sürümünde UART üzerinden gelen hedef açıyı kaskat konum kontrolüyle sanal motora uygula; ölçülen açıyı ve durumu geri gönder. FreeRTOS görevleriyle yapılandır.",
+      "arastir": [
+        "74. görevdeki kaskat kontrol",
+        "95. görevdeki görev yapısı"
+      ],
+      "gerekenler": [
+        "MOTOR/SANAL"
+      ],
+      "basari": [
+        "Basamak hedefinde aşım ve oturma süresi test planındaki hedefi sağlıyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "UART ve sanal motorla başlangıç sürümü. CAN donanım doğrulaması ayrı tutulur.",
+      "tur": "bitirme",
+      "onkosul": [
+        97
+      ],
+      "modul": 8
+    },
+    {
+      "no": 99,
+      "baslik": "Güvenlik ve hata enjeksiyonu",
+      "amac": "Wokwi sürümüne zaman aşımı, hata kodları ve acil durdurma ekle. Mesaj akışını durdur, sensör verisini geçersiz yap, motor modeline yük ekle ve kumandayı resetle. Watchdog çevre birimi desteklenmiyorsa onu bekleyen test olarak bırak. Her senaryoyu geçti/kaldı tablosuna yaz.",
+      "arastir": [
+        "hata enjeksiyonu",
+        "güvenlik gereksinimi doğrulama"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "IMU"
+      ],
+      "basari": [
+        "Bütün güvenlik gereksinimleri test edilip geçti/kaldı olarak raporlanmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "UART/model hata senaryoları yapılır. Gerçek CAN kablosu, motor elektriği ve desteklenmeyen watchdog doğrulanmış sayılmaz.",
+      "tur": "bitirme",
+      "onkosul": [
+        98
+      ],
+      "modul": 8
+    },
+    {
+      "no": 100,
+      "baslik": "Doğrulama ve sürüm",
+      "amac": "Test planının tamamını koş: basamak cevabı, takip hatası, uçtan uca gecikme, hata senaryoları. Sonuçları grafiklerle README'ye ekle, demo videosu çek ve v1.0 sürümünü yayınla.",
+      "arastir": [
+        "GitHub Releases",
+        "teknik dokümantasyon"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "v1.0-sim sürümü yayında.",
+        "README içinde ölçüm, demo, simülasyon sınırları ve kişisel katkı bulunuyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi sürümünü v1.0-sim olarak yayımla, CAN ve fiziksel doğrulamayı ayrı listele.",
+      "tur": "bitirme",
+      "onkosul": [
+        99
+      ],
+      "modul": 8
+    },
+    {
+      "no": 101,
+      "baslik": "Tablo tabanlı durum makinesi",
+      "amac": "Trafik lambasını switch-case yerine durum geçiş tablosuyla yeniden yaz. Davranış birebir aynı kalsın.",
+      "arastir": [
+        "durum geçiş tablosu",
+        "fonksiyon işaretçisi"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN",
+        "LED"
+      ],
+      "basari": [
+        "Yeni bir durum eklemek tabloya bir satır eklemek kadar kolay."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        10
+      ],
+      "modul": 9
+    },
+    {
+      "no": 102,
+      "baslik": "Hata bul: zaman sayacı taşması",
+      "amac": "HAL_GetTick 32 bitliktir ve yaklaşık 49,7 günde taşar. `if (now > last + interval)` yazımının taşmada neden bozulduğunu göster. Sayacı taşmaya yakın bir değerden başlatarak test et ve doğru yazımı uygula.",
+      "arastir": [
+        "işaretsiz taşma",
+        "modüler aritmetik"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "Taşma anında zamanlama bozulmuyor.",
+        "Test yöntemi README'de."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        8
+      ],
+      "modul": 9
+    },
+    {
+      "no": 103,
+      "baslik": "Hata bul: volatile",
+      "amac": "Kesmede değişen bayrağı volatile olmadan tanımla ve optimizasyonu -O2 yap. Programın neden takıldığını derleyicinin ürettiği assembly'ye bakarak açıkla.",
+      "arastir": [
+        "derleyici optimizasyonu",
+        "volatile",
+        "disassembly görünümü"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN"
+      ],
+      "basari": [
+        "Assembly'deki fark README'de gösterilmiş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        16
+      ],
+      "modul": 9
+    },
+    {
+      "no": 104,
+      "baslik": "Zamanı bağımsız ölç",
+      "amac": "Timer kesmesinin periyodunu bağımsız bir yöntemle ölç: logic analyzer veya osiloskop varsa pin değiştirerek, yoksa DWT cycle sayacıyla. Hesapla karşılaştır.",
+      "arastir": [
+        "DWT cycle sayacı (Cortex-M0'da yok)",
+        "pin toggle ile ölçüm"
+      ],
+      "gerekenler": [
+        "KART",
+        "LA"
+      ],
+      "basari": [
+        "Ölçülen ve hesaplanan periyot arasındaki fark raporlanmış."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Wokwi'nin logic analyzer parçasını kullanabilirsin.",
+      "tur": "pekistirme",
+      "onkosul": [
+        17
+      ],
+      "modul": 9
+    },
+    {
+      "no": 105,
+      "baslik": "Kesmede uzun iş",
+      "amac": "Kesmede yapılan işin süresini adım adım artır; ana döngünün ve diğer kesmelerin hangi noktada bozulduğunu ölç.",
+      "arastir": [
+        "kesme gecikmesi",
+        "CPU yükü"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "Bozulma eşiği ölçülmüş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        19
+      ],
+      "modul": 9
+    },
+    {
+      "no": 106,
+      "baslik": "PWM çözünürlüğü ve frekansı",
+      "amac": "Farklı ARR değerleri için PWM frekansını ve duty çözünürlüğünü (bit) hesapla, tablo çıkar. Motor ve LED için hangi değerleri neden seçeceğini açıkla.",
+      "arastir": [
+        "PWM çözünürlüğü",
+        "frekans-çözünürlük dengesi"
+      ],
+      "gerekenler": [
+        "KART"
+      ],
+      "basari": [
+        "Tablo ve seçim gerekçesi README'de."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        21
+      ],
+      "modul": 9
+    },
+    {
+      "no": 107,
+      "baslik": "Filtre karşılaştırması",
+      "amac": "Gürültülü bir ADC sinyali üzerinde hareketli ortalama, medyan ve birinci dereceden IIR filtreyi karşılaştır. Ani sıçramalara (spike) karşı davranışlarını incele.",
+      "arastir": [
+        "medyan filtre",
+        "IIR",
+        "spike bastırma"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT"
+      ],
+      "basari": [
+        "Gecikme, gürültü ve spike davranışı tablosu README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Simülasyonda gürültüyü yazılımla ekle.",
+      "tur": "pekistirme",
+      "onkosul": [
+        28
+      ],
+      "modul": 9
+    },
+    {
+      "no": 108,
+      "baslik": "Halka tampon birim testi",
+      "amac": "Halka tampon kodunu bilgisayarda derle ve kenar durumlarını test et: boş, dolu, sarma, taşma. Testler tek komutla çalışsın.",
+      "arastir": [
+        "birim testi",
+        "host üzerinde derleme (gcc)",
+        "assert"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "Bütün testler geçiyor.",
+        "Koda kasıtlı bir hata eklenince test yakalıyor."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        36
+      ],
+      "modul": 9
+    },
+    {
+      "no": 109,
+      "baslik": "CRC doğrulama",
+      "amac": "CRC16 fonksiyonunu bilinen test vektörleriyle doğrula. C ve Python uygulamaları aynı girdilerde aynı sonucu versin.",
+      "arastir": [
+        "CRC çeşitleri (polinom, başlangıç değeri)",
+        "test vektörleri"
+      ],
+      "gerekenler": [
+        "PY"
+      ],
+      "basari": [
+        "Test vektörleri ve sonuçlar README'de."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        39
+      ],
+      "modul": 9
+    },
+    {
+      "no": 110,
+      "baslik": "Bozuk paket testi",
+      "amac": "Python'dan gönderilen paketlere rastgele bit hatası, bayt kaybı ve fazladan bayt ekle. Alıcının bozuk paketleri reddettiğini ve senkronu kendiliğinden yeniden yakaladığını ölç.",
+      "arastir": [
+        "hata enjeksiyonu",
+        "yeniden senkronizasyon"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Hata türüne göre reddetme ve kurtarma oranları tablosu."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).",
+      "tur": "pekistirme",
+      "onkosul": [
+        39
+      ],
+      "modul": 9
+    },
+    {
+      "no": 111,
+      "baslik": "Aliasing",
+      "amac": "Bilinen frekansta bir sinyali (ör. kendi ürettiğin PWM'i RC filtreyle yumuşatıp) farklı örnekleme frekanslarında örnekle. Aliasing'i grafikte göster ve açıkla.",
+      "arastir": [
+        "örnekleme teoremi",
+        "aliasing",
+        "anti-aliasing filtresi"
+      ],
+      "gerekenler": [
+        "KART",
+        "RC",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Görünen frekansın hesapla uyuştuğu gösterilmiş."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        42
+      ],
+      "modul": 9
+    },
+    {
+      "no": 112,
+      "baslik": "Güç kesilmesine dayanıklı kayıt",
+      "amac": "Flash'a yazma sırasında reset olursa ne olduğunu test et. İki kayıt alanı (A/B) ve CRC ile güç kesilmesine dayanıklı kayıt yap.",
+      "arastir": [
+        "A/B kayıt",
+        "geçerlilik kontrolü",
+        "atomik güncelleme"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Yazma sırasında 20 reset testinde her seferinde geçerli bir kayıt bulunuyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        44
+      ],
+      "modul": 9
+    },
+    {
+      "no": 113,
+      "baslik": "I²C hattı kilitlenmesi",
+      "amac": "Okuma sırasında karta reset atılırsa sensörün SDA'yı low tutabileceğini araştır. Açılışta hattı kontrol edip 9 saat darbesiyle kurtaran bir rutin yaz.",
+      "arastir": [
+        "I²C bus recovery",
+        "GPIO ile saat darbesi üretme"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "Kurtarma rutini test edilmiş."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        48
+      ],
+      "modul": 9
+    },
+    {
+      "no": 114,
+      "baslik": "CPU yükü ölçümü",
+      "amac": "Bloklayan, kesmeli ve DMA'lı sensör okumada CPU'nun meşgul kaldığı süreyi DWT cycle sayacıyla ölç.",
+      "arastir": [
+        "DWT",
+        "CPU yükü"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU"
+      ],
+      "basari": [
+        "Üç yöntemin CPU yükü tablosu."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "DMA'lı ölçüm gerçek kartta.",
+      "tur": "pekistirme",
+      "onkosul": [
+        53
+      ],
+      "modul": 9
+    },
+    {
+      "no": 115,
+      "baslik": "Ekran optimizasyonu",
+      "amac": "Ekranın yalnızca değişen bölgesini gönder. Saniyedeki kare sayısını önce ve sonra ölç.",
+      "arastir": [
+        "kirli bölge (dirty rectangle)",
+        "FPS ölçümü"
+      ],
+      "gerekenler": [
+        "KART",
+        "OLED"
+      ],
+      "basari": [
+        "FPS iyileşmesi ölçülmüş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        57
+      ],
+      "modul": 9
+    },
+    {
+      "no": 116,
+      "baslik": "Ölü bölge telafisi",
+      "amac": "Ölçtüğün ölü bölgeyi kontrol çıkışına telafi olarak ekle. Düşük hız takibindeki iyileşmeyi ölç.",
+      "arastir": [
+        "ölü bölge telafisi",
+        "doğrusal olmayan aktüatör"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR"
+      ],
+      "basari": [
+        "Düşük hızda takip hatası önce ve sonra karşılaştırılmış."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        71
+      ],
+      "modul": 9
+    },
+    {
+      "no": 117,
+      "baslik": "Sistematik PI ayarı",
+      "amac": "Ziegler-Nichols ya da röle (relay) yöntemiyle PI kazançlarını belirle; elle bulduğun kazançlarla karşılaştır.",
+      "arastir": [
+        "Ziegler-Nichols",
+        "röle deneyi",
+        "kritik kazanç ve periyot"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "İki yöntemin basamak cevapları yan yana."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "pekistirme",
+      "onkosul": [
+        71
+      ],
+      "modul": 9
+    },
+    {
+      "no": 118,
+      "baslik": "Kontrol frekansının etkisi",
+      "amac": "Hız kontrolünü 1 kHz, 200 Hz ve 50 Hz'de çalıştır. Aynı kazançlarla performansın nasıl değiştiğini ve nedenini açıkla.",
+      "arastir": [
+        "örnekleme süresi ve kararlılık",
+        "ayrıklaştırma"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Üç frekansın cevap grafikleri ve açıklama README'de."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "pekistirme",
+      "onkosul": [
+        71
+      ],
+      "modul": 9
+    },
+    {
+      "no": 119,
+      "baslik": "Türev terimi",
+      "amac": "PID'e türev terimi ekle. Ham türevin gürültüyü nasıl büyüttüğünü göster, türevi filtrele ve hedef yerine ölçüm üzerinden al (derivative kick).",
+      "arastir": [
+        "türev filtresi",
+        "derivative kick",
+        "ölçüm üzerinden türev"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Filtresiz ve filtreli D ile derivative kick karşılaştırılmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "pekistirme",
+      "onkosul": [
+        72
+      ],
+      "modul": 9
+    },
+    {
+      "no": 120,
+      "baslik": "Hareket profili",
+      "amac": "Hedef konuma basamak yerine trapez hız profiliyle git. Aşımı, titreşimi ve en yüksek duty'yi karşılaştır.",
+      "arastir": [
+        "trapez profil",
+        "ivme sınırı"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Basamak ve trapez profilin grafikleri yan yana."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "pekistirme",
+      "onkosul": [
+        74
+      ],
+      "modul": 9
+    },
+    {
+      "no": 121,
+      "baslik": "Kalman duyarlılık analizi",
+      "amac": "Q ve R için 3×3 değer ızgarası oluştur. Her kombinasyonda gecikmeyi ve gürültüyü aynı kayıt üzerinde ölç.",
+      "arastir": [
+        "parametre taraması",
+        "ısı haritası"
+      ],
+      "gerekenler": [
+        "PY"
+      ],
+      "basari": [
+        "Izgara sonuçları tablo ya da ısı haritası olarak README'de."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        84
+      ],
+      "modul": 9
+    },
+    {
+      "no": 122,
+      "baslik": "Sensör hata senaryoları",
+      "amac": "Kayıtlı veriye yapay hatalar ekle: jiroskop bias'ında ani değişim, ivmeölçer doygunluğu, örnek kaybı. İki filtrenin tepkisini karşılaştır.",
+      "arastir": [
+        "hata modelleme",
+        "sağlamlık (robustness)"
+      ],
+      "gerekenler": [
+        "PY"
+      ],
+      "basari": [
+        "Her senaryonun sonucu grafikle açıklanmış."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        84
+      ],
+      "modul": 9
+    },
+    {
+      "no": 123,
+      "baslik": "CAN bus yükü",
+      "amac": "Mesaj tablona göre bus yükünü (%) hesapla. Yükü kasıtlı artırarak düşük öncelikli mesajların gecikmesini ölç.",
+      "arastir": [
+        "bus yükü hesabı",
+        "ID önceliği ve arbitrasyon"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN"
+      ],
+      "basari": [
+        "Hesaplanan ve ölçülen yük; öncelik-gecikme ilişkisi README'de."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "pekistirme",
+      "onkosul": [
+        88
+      ],
+      "modul": 9
+    },
+    {
+      "no": 124,
+      "baslik": "Durum makinesi testleri",
+      "amac": "Hata yönetimi durum makinesini donanımdan bağımsız hale getir ve bilgisayarda her geçişi kapsayan birim testleri yaz.",
+      "arastir": [
+        "birim testi",
+        "test kapsamı",
+        "donanım soyutlaması"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "Bütün geçişler testle kapsanıyor."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        92
+      ],
+      "modul": 9
+    },
+    {
+      "no": 125,
+      "baslik": "Öncelik terslenmesi",
+      "amac": "FreeRTOS'ta öncelik terslenmesini (priority inversion) kasıtlı oluştur; mutex'in öncelik kalıtımıyla çözüldüğünü göster. Görevlerin stack kullanımını ölçüp boyutları ayarla.",
+      "arastir": [
+        "priority inversion",
+        "priority inheritance",
+        "stack high water mark"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Terslenme ve çözümü zaman çizelgesiyle gösterilmiş."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "pekistirme",
+      "onkosul": [
+        95
+      ],
+      "modul": 9
+    },
+    {
+      "no": 126,
+      "baslik": "SD karta kayıt",
+      "amac": "microSD karta FatFs ile CSV kaydı yap. Dosyayı düzenli aralıklarla senkronla; güç kesilmesinde ne kadar veri kaybedildiğini ölç.",
+      "arastir": [
+        "FatFs",
+        "f_sync",
+        "SPI üzerinden SD kart"
+      ],
+      "gerekenler": [
+        "KART",
+        "SD"
+      ],
+      "basari": [
+        "Kayıt bilgisayarda açılıyor.",
+        "Güç kesilmesi testi raporlanmış."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "Wokwi'de microSD parçası var; STM32 ile FatFs'in çalıştığını dene.",
+      "tur": "ileri",
+      "onkosul": [
+        55
+      ],
+      "modul": 10
+    },
+    {
+      "no": 127,
+      "baslik": "Yüksek hızlı kayıt",
+      "amac": "IMU'yu 1 kHz'de çift tamponla SD karta kaydet; yazma gecikmeleri örnek kaybettirmesin.",
+      "arastir": [
+        "çift tampon",
+        "SD kart yazma gecikmesi",
+        "DMA"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SD"
+      ],
+      "basari": [
+        "10 dakikalık kayıtta kayıp örnek 0."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        126
+      ],
+      "modul": 10
+    },
+    {
+      "no": 128,
+      "baslik": "Düğümler arası zaman senkronu",
+      "amac": "İki kart arasında CAN üzerinden zaman senkronizasyonu kur; saat ofsetini ve kaymasını ölç.",
+      "arastir": [
+        "zaman senkronizasyonu",
+        "saat kayması"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN"
+      ],
+      "basari": [
+        "Senkron sonrası ofset ölçülmüş."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "ileri",
+      "onkosul": [
+        87
+      ],
+      "modul": 10
+    },
+    {
+      "no": 129,
+      "baslik": "USB CDC telemetri",
+      "amac": "Kartın USB'sini sanal COM port (CDC) olarak kullan; UART'a göre veri hızını karşılaştır.",
+      "arastir": [
+        "USB CDC",
+        "USB Device middleware"
+      ],
+      "gerekenler": [
+        "KART",
+        "PY"
+      ],
+      "basari": [
+        "Ölçülen veri hızları tablosu README'de."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de STM32 USB'si yok.",
+      "tur": "ileri",
+      "onkosul": [
+        43
+      ],
+      "modul": 10
+    },
+    {
+      "no": 130,
+      "baslik": "Bootloader temelleri",
+      "amac": "Uygulamayı Flash'ın ileri bir adresine taşı; küçük bir bootloader'dan uygulamaya atla. Vektör tablosunun yerini değiştir.",
+      "arastir": [
+        "linker script",
+        "VTOR",
+        "stack pointer ve reset vektörü"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Bootloader → uygulama geçişi çalışıyor."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        44
+      ],
+      "modul": 10
+    },
+    {
+      "no": 131,
+      "baslik": "UART ile firmware güncelleme",
+      "amac": "Python'dan yeni uygulama dosyasını paketlerle gönder; bootloader Flash'a yazsın, CRC ile doğrulasın, geçerliyse uygulamaya atlasın.",
+      "arastir": [
+        "firmware güncelleme akışı",
+        "CRC ile doğrulama",
+        "geri dönüş (fallback)"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Güncelleme ve bozuk dosyanın reddi test edilmiş."
+      ],
+      "wokwi": "dene",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        130
+      ],
+      "modul": 10
+    },
+    {
+      "no": 132,
+      "baslik": "Düşük güç modları",
+      "amac": "Sleep ve Stop modlarını dene; butonla ya da RTC ile uyandır. Multimetren varsa akım tüketimini ölç.",
+      "arastir": [
+        "Sleep / Stop / Standby",
+        "uyandırma kaynakları"
+      ],
+      "gerekenler": [
+        "KART",
+        "BTN"
+      ],
+      "basari": [
+        "Uyandırma kaynakları çalışıyor; ölçümler ya da gözlemler raporlanmış."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de PWR ve RTC yok.",
+      "tur": "ileri",
+      "onkosul": [
+        91
+      ],
+      "modul": 10
+    },
+    {
+      "no": 133,
+      "baslik": "CMSIS-DSP ile filtre ve FFT",
+      "amac": "Python'da FIR/IIR filtre katsayısı tasarla, CMSIS-DSP ile kartta uygula. ADC sinyalinin FFT'sini alıp spektrumu çiz.",
+      "arastir": [
+        "CMSIS-DSP",
+        "scipy.signal",
+        "FFT"
+      ],
+      "gerekenler": [
+        "KART",
+        "POT",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Filtrenin frekans cevabı ölçümle doğrulanmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Hesaplamayı simülasyonda dene; gerçek sinyal için gerçek kart.",
+      "tur": "ileri",
+      "onkosul": [
+        42
+      ],
+      "modul": 10
+    },
+    {
+      "no": 134,
+      "baslik": "Sabit noktalı aritmetik",
+      "amac": "PI kontrolcüyü float ve Q15 sabit noktalı olarak yaz; çalışma süresini ve doğruluğu karşılaştır.",
+      "arastir": [
+        "Q formatı",
+        "taşma ve doyma"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "Süre ve hata karşılaştırma tablosu README'de."
+      ],
+      "wokwi": "evet",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        71
+      ],
+      "modul": 10
+    },
+    {
+      "no": 135,
+      "baslik": "Genel Kalman filtresi",
+      "amac": "Kalman'ı matris formunda yaz. Motor için encoder'dan konum, hız ve yük torkunu kestir.",
+      "arastir": [
+        "durum uzayı modeli",
+        "matris işlemleri",
+        "bozucu kestirimi"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Kestirilen hız ham RPM'den daha az gürültülü; gecikmesi ölçülmüş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ileri",
+      "onkosul": [
+        83
+      ],
+      "modul": 10
+    },
+    {
+      "no": 136,
+      "baslik": "Kestirimle hız kontrolü",
+      "amac": "Hız kontrolünde ham RPM yerine kestirilen hızı kullan; özellikle düşük hızda performansı karşılaştır.",
+      "arastir": [
+        "gözlemci tabanlı kontrol"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Düşük hız takibindeki fark ölçülmüş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ileri",
+      "onkosul": [
+        135
+      ],
+      "modul": 10
+    },
+    {
+      "no": 137,
+      "baslik": "İleri besleme",
+      "amac": "Hız kontrolüne modelden ileri besleme (feedforward) ekle. Takip hatasındaki değişimi ölç.",
+      "arastir": [
+        "feedforward",
+        "model tabanlı kontrol"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Rampa takip hatası önce ve sonra karşılaştırılmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ileri",
+      "onkosul": [
+        71
+      ],
+      "modul": 10
+    },
+    {
+      "no": 138,
+      "baslik": "LQR ile durum geri beslemesi",
+      "amac": "Motor konum sistemi için durum uzayı modeli kur, LQR kazancını Python'da hesapla, kartta uygula. Kaskat PID ile karşılaştır.",
+      "arastir": [
+        "durum uzayı",
+        "LQR",
+        "python-control veya scipy"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR/SANAL",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Aynı test senaryosunda iki kontrolcünün sonuçları yan yana."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ileri",
+      "onkosul": [
+        74
+      ],
+      "modul": 10
+    },
+    {
+      "no": 139,
+      "baslik": "Sistem tanılama",
+      "amac": "Motora PRBS ya da chirp giriş ver; veriden en küçük kareler yöntemiyle model çıkar. Modeli farklı bir veri setiyle doğrula.",
+      "arastir": [
+        "PRBS",
+        "chirp",
+        "en küçük kareler",
+        "model doğrulama"
+      ],
+      "gerekenler": [
+        "KART",
+        "MOTOR",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Modelin doğrulama verisindeki hatası raporlanmış."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        68
+      ],
+      "modul": 10
+    },
+    {
+      "no": 140,
+      "baslik": "3D yönelim",
+      "amac": "Mahony ya da Madgwick filtresiyle quaternion tabanlı 3D yönelim kestirimi yap; Python'da 3D küp olarak göster.",
+      "arastir": [
+        "quaternion",
+        "Mahony / Madgwick",
+        "gimbal kilidi"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Her yöne dönüş doğru izleniyor."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'deki MPU6050'nin değerleri elle ayarlanıyor; gerçek sensördeki gürültü ve kayma yok. Filtre davranışını gerçek IMU ya da yapay gürültü eklenmiş kayıtla incele.",
+      "tur": "ileri",
+      "onkosul": [
+        84
+      ],
+      "modul": 10
+    },
+    {
+      "no": 141,
+      "baslik": "Manyetometre ve yön",
+      "amac": "Manyetometre ekle; hard-iron ve soft-iron kalibrasyonu yap; eğim telafili pusula (yaw) hesapla.",
+      "arastir": [
+        "hard-iron / soft-iron",
+        "eğim telafisi",
+        "manyetik sapma"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "MAG",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Kalibrasyon öncesi ve sonrası ölçüm dağılımı grafikte."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        140
+      ],
+      "modul": 10
+    },
+    {
+      "no": 142,
+      "baslik": "Sistemi RTOS üzerinde yeniden kur",
+      "amac": "Bitirme projesinin bir düğümünü tamamen FreeRTOS görevleriyle yeniden yapılandır; görevlerin CPU payını (runtime stats) ölç ve zamanlama analizini yaz.",
+      "arastir": [
+        "runtime stats",
+        "en kötü durum yanıt süresi",
+        "oran-monoton zamanlama"
+      ],
+      "gerekenler": [
+        "KART",
+        "SERI"
+      ],
+      "basari": [
+        "CPU yükü ve en kötü durum yanıt süreleri raporlanmış."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        98
+      ],
+      "modul": 10
+    },
+    {
+      "no": 143,
+      "baslik": "Birim test altyapısı",
+      "amac": "Filtre, PID ve protokol modüllerin için Unity test çerçevesiyle testler yaz; GitHub Actions'ta her push'ta çalışsın.",
+      "arastir": [
+        "Unity (ThrowTheSwitch)",
+        "GitHub Actions"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "Actions sekmesinde testler yeşil."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        108
+      ],
+      "modul": 10
+    },
+    {
+      "no": 144,
+      "baslik": "Firmware'i CI'da derle",
+      "amac": "GitHub Actions'ta arm-none-eabi-gcc ile firmware derlemesini otomatikleştir; derleme kırılırsa PR birleştirilemesin.",
+      "arastir": [
+        "arm-none-eabi-gcc",
+        "CMake/Makefile",
+        "branch protection"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "Kırık bir commit'te CI kırmızıya dönüyor."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "Wokwi CI ile simülasyon testi de ekleyebilirsin (ücretli dakikalar gerekebilir).",
+      "tur": "ileri",
+      "onkosul": [
+        143
+      ],
+      "modul": 10
+    },
+    {
+      "no": 145,
+      "baslik": "Statik analiz",
+      "amac": "cppcheck çalıştır, temel MISRA C kurallarını araştır ve projendeki uyarıları sıfırla ya da gerekçelendir.",
+      "arastir": [
+        "cppcheck",
+        "MISRA C"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "Uyarı raporu ve çözümleri README'de."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        143
+      ],
+      "modul": 10
+    },
+    {
+      "no": 146,
+      "baslik": "CAN mesaj kataloğu ve PC aracı",
+      "amac": "Bitirme projesinin mesajlarını DBC formatında yaz. Python'da (ör. cantools ile) mesajları çözen bir izleme aracı yap; veriyi bir düğüm üzerinden UART köprüsüyle bilgisayara aktar.",
+      "arastir": [
+        "DBC formatı",
+        "cantools",
+        "CAN-UART köprüsü"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN",
+        "SERI",
+        "PY"
+      ],
+      "basari": [
+        "Araç canlı mesajları isim ve birimleriyle gösteriyor."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "Wokwi'de CAN yok. Gerçek kartta yap; tek kartın varsa loopback modunu kullan.",
+      "tur": "ileri",
+      "onkosul": [
+        100
+      ],
+      "modul": 10
+    },
+    {
+      "no": 147,
+      "baslik": "İki eksen",
+      "amac": "Bitirme projesine ikinci bir aktüatör ekle (ya da sanal motorla ikinci eksen); iki eksenin senkron çalışmasını sağla.",
+      "arastir": [
+        "çok eksenli kontrol",
+        "senkronizasyon"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN",
+        "MOTOR/SANAL"
+      ],
+      "basari": [
+        "İki eksenin takip hataları ölçülmüş."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "Wokwi'de DC motor parçası yok. 069'daki sanal motoru kullan; encoder modunun simülasyonunu önce doğrula.",
+      "tur": "ileri",
+      "onkosul": [
+        100
+      ],
+      "modul": 10
+    },
+    {
+      "no": 148,
+      "baslik": "Kumanda tarafında arıza tespiti",
+      "amac": "IMU donması, değer dışı veri ve zaman damgası kayması gibi arızaları algıla; sistemi kısıtlı modda (degrade mode) çalıştır.",
+      "arastir": [
+        "arıza tespiti",
+        "makullük kontrolü (plausibility)",
+        "degrade mod"
+      ],
+      "gerekenler": [
+        "KART",
+        "IMU",
+        "CAN"
+      ],
+      "basari": [
+        "Her arıza senaryosu ve sistem tepkisi tabloda."
+      ],
+      "wokwi": "kismen",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        100
+      ],
+      "modul": 10
+    },
+    {
+      "no": 149,
+      "baslik": "Gecikme bütçesi",
+      "amac": "Sensörden motora uçtan uca gecikmeyi aşama aşama ölç: örnekleme, filtre, CAN, kontrol, PWM. En büyük gecikmeyi azalt.",
+      "arastir": [
+        "gecikme bütçesi",
+        "uçtan uca ölçüm"
+      ],
+      "gerekenler": [
+        "KART",
+        "KART2",
+        "CAN",
+        "MOTOR/SANAL",
+        "LA"
+      ],
+      "basari": [
+        "Önce ve sonra gecikme bütçesi tablosu README'de."
+      ],
+      "wokwi": "hayir",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        100
+      ],
+      "modul": 10
+    },
+    {
+      "no": 150,
+      "baslik": "Portföy",
+      "amac": "Bitirme projesini ayrı ve temiz bir repoya taşı: mimari diyagram, sonuç grafikleri, demo videosu, kurulum talimatı ve 2–4 sayfalık teknik rapor. CV'ne yazacağın 3–4 maddeyi ölçülmüş sonuçlarla hazırla ve v2.0 sürümünü yayınla.",
+      "arastir": [
+        "teknik rapor yazımı",
+        "README tasarımı",
+        "ölçülebilir CV maddesi"
+      ],
+      "gerekenler": [],
+      "basari": [
+        "Repoyu hiç görmemiş biri README'den projeyi 5 dakikada anlayabiliyor.",
+        "CV maddelerindeki her sayı repodaki bir ölçüme dayanıyor."
+      ],
+      "wokwi": "pc",
+      "wokwi_not": "",
+      "tur": "ileri",
+      "onkosul": [
+        100
+      ],
+      "modul": 10
+    }
+  ]
+}

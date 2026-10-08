@@ -1,0 +1,30 @@
+# STM32CubeIDE derleme çıktıları
+Debug/
+Release/
+build/
+*.o
+*.d
+*.elf
+*.map
+*.list
+*.su
+*.cyclo
+*.bin
+*.hex
+
+# Drivers ve Middlewares dahil gerekli kaynaklar korunur.
+
+# IDE çalışma alanı
+.metadata/
+.vscode/.browse*
+*.code-workspace
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# İşletim sistemi
+.DS_Store
+Thumbs.db

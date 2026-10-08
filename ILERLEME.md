@@ -1,0 +1,157 @@
+# Kişisel ilerleme
+
+Ad: Doldur
+Repo: Doldur
+
+Kutuyu yalnızca kaynak, rapor ve kanıt tamamlandığında işaretle.
+
+- [ ] 001 · HAL ile LED yak
+- [ ] 002 · Debugger ile adım adım çalıştır
+- [ ] 003 · HAL_Delay ile yanıp sönen LED
+- [ ] 004 · Butonla LED
+- [ ] 005 · Debounce'lu ikili sayaç
+- [ ] 006 · Kayan ışık
+- [ ] 007 · Butonla hız kademeleri
+- [ ] 008 · HAL_Delay olmadan zamanlama
+- [ ] 009 · Bağımsız yazılım zamanlayıcıları
+- [ ] 010 · Trafik lambası
+- [ ] 011 · Kısa ve uzun basış
+- [ ] 012 · Olay tabanlı buton modülü
+- [ ] 013 · HAL'siz GPIO
+- [ ] 014 · Kodunu modüllere ayır
+- [ ] 015 · Reaksiyon süresi oyunu
+- [ ] 016 · Harici kesme (EXTI) ile buton
+- [ ] 017 · Timer kesmesi
+- [ ] 018 · Clock ağacı
+- [ ] 019 · Kesme öncelikleri
+- [ ] 020 · Kronometre
+- [ ] 021 · PWM ile LED parlaklığı
+- [ ] 022 · Nefes alan LED
+- [ ] 023 · Butonla parlaklık ve gama düzeltmesi
+- [ ] 024 · Input capture ile frekans ölçümü
+- [ ] 025 · Geri sayım alarmı
+- [ ] 026 · ADC ile potansiyometre
+- [ ] 027 · Potansiyometreyle parlaklık
+- [ ] 028 · Hareketli ortalama filtresi
+- [ ] 029 · Çok kanallı ADC ve dahili sensörler
+- [ ] 030 · Histerezisli termostat
+- [ ] 031 · UART ile ilk mesaj
+- [ ] 032 · printf yönlendirme
+- [ ] 033 · Karakter komutları
+- [ ] 034 · Kesmeyle UART alımı
+- [ ] 035 · Satır tabanlı komut arayüzü
+- [ ] 036 · Halka tampon (ring buffer)
+- [ ] 037 · Sağlam komut ayrıştırıcı
+- [ ] 038 · Gönderim süresi ve DMA
+- [ ] 039 · Paket protokolü ve CRC
+- [ ] 040 · Paketli uzaktan kumanda
+- [ ] 041 · ADC + DMA (dairesel tampon)
+- [ ] 042 · Timer tetiklemeli örnekleme
+- [ ] 043 · Python ile canlı grafik ve kayıt
+- [ ] 044 · Flash'a ayar kaydetme
+- [ ] 045 · Mini osiloskop
+- [ ] 046 · I²C hat tarama
+- [ ] 047 · Kimlik register'ı
+- [ ] 048 · Register okuma-yazma katmanı
+- [ ] 049 · SPI ile sensör
+- [ ] 050 · Eğim LED'leri
+- [ ] 051 · Sensör konfigürasyonu
+- [ ] 052 · Data-ready kesmesi
+- [ ] 053 · Bloklamasız sensör okuma
+- [ ] 054 · Bus'tan bağımsız sürücü
+- [ ] 055 · Veri kaydedici
+- [ ] 056 · OLED ekran sürücüsü
+- [ ] 057 · Ekranda canlı veri
+- [ ] 058 · DMA ile ekran güncelleme
+- [ ] 059 · Bağlantı hatasından kurtulma
+- [ ] 060 · Dijital su terazisi
+- [ ] 061 · DC motor sürme
+- [ ] 062 · Rampa
+- [ ] 063 · PWM frekansı ve ölü bölge
+- [ ] 064 · Encoder ile konum
+- [ ] 065 · Motor test tezgâhı
+- [ ] 066 · RPM hesabı
+- [ ] 067 · Hız filtresi
+- [ ] 068 · Motoru tanı
+- [ ] 069 · Sanal motor ve encoder üreteci
+- [ ] 070 · P ile hız sabitleyici
+- [ ] 071 · PI hız kontrolü
+- [ ] 072 · Anti-windup
+- [ ] 073 · Bozucu etkiye karşı
+- [ ] 074 · Kaskat konum kontrolü
+- [ ] 075 · Konum servosu
+- [ ] 076 · Jiroskop ve bias
+- [ ] 077 · Açı entegrasyonu ve kayma
+- [ ] 078 · İvmeölçerden açı
+- [ ] 079 · İvmeölçer kalibrasyonu
+- [ ] 080 · Kalibrasyon sihirbazı
+- [ ] 081 · Sabit örnekleme ve dt
+- [ ] 082 · Complementary filtre
+- [ ] 083 · Kalman filtresi
+- [ ] 084 · Filtreleri karşılaştır
+- [ ] 085 · Yapay ufuk
+- [ ] 086 · CAN loopback
+- [ ] 087 · İki kart arası CAN
+- [ ] 088 · CAN mesaj tasarımı
+- [ ] 089 · CAN hata durumları
+- [ ] 090 · CAN ile uzaktan motor
+- [ ] 091 · Watchdog
+- [ ] 092 · Hata yönetimi durum makinesi
+- [ ] 093 · HardFault analizi
+- [ ] 094 · FreeRTOS ile ilk görevler
+- [ ] 095 · Çok görevli veri sistemi
+- [ ] 096 · Gereksinimler ve mimari
+- [ ] 097 · Kumanda düğümü
+- [ ] 098 · Aktüatör düğümü
+- [ ] 099 · Güvenlik ve hata enjeksiyonu
+- [ ] 100 · Doğrulama ve sürüm
+- [ ] 101 · Tablo tabanlı durum makinesi
+- [ ] 102 · Hata bul: zaman sayacı taşması
+- [ ] 103 · Hata bul: volatile
+- [ ] 104 · Zamanı bağımsız ölç
+- [ ] 105 · Kesmede uzun iş
+- [ ] 106 · PWM çözünürlüğü ve frekansı
+- [ ] 107 · Filtre karşılaştırması
+- [ ] 108 · Halka tampon birim testi
+- [ ] 109 · CRC doğrulama
+- [ ] 110 · Bozuk paket testi
+- [ ] 111 · Aliasing
+- [ ] 112 · Güç kesilmesine dayanıklı kayıt
+- [ ] 113 · I²C hattı kilitlenmesi
+- [ ] 114 · CPU yükü ölçümü
+- [ ] 115 · Ekran optimizasyonu
+- [ ] 116 · Ölü bölge telafisi
+- [ ] 117 · Sistematik PI ayarı
+- [ ] 118 · Kontrol frekansının etkisi
+- [ ] 119 · Türev terimi
+- [ ] 120 · Hareket profili
+- [ ] 121 · Kalman duyarlılık analizi
+- [ ] 122 · Sensör hata senaryoları
+- [ ] 123 · CAN bus yükü
+- [ ] 124 · Durum makinesi testleri
+- [ ] 125 · Öncelik terslenmesi
+- [ ] 126 · SD karta kayıt
+- [ ] 127 · Yüksek hızlı kayıt
+- [ ] 128 · Düğümler arası zaman senkronu
+- [ ] 129 · USB CDC telemetri
+- [ ] 130 · Bootloader temelleri
+- [ ] 131 · UART ile firmware güncelleme
+- [ ] 132 · Düşük güç modları
+- [ ] 133 · CMSIS-DSP ile filtre ve FFT
+- [ ] 134 · Sabit noktalı aritmetik
+- [ ] 135 · Genel Kalman filtresi
+- [ ] 136 · Kestirimle hız kontrolü
+- [ ] 137 · İleri besleme
+- [ ] 138 · LQR ile durum geri beslemesi
+- [ ] 139 · Sistem tanılama
+- [ ] 140 · 3D yönelim
+- [ ] 141 · Manyetometre ve yön
+- [ ] 142 · Sistemi RTOS üzerinde yeniden kur
+- [ ] 143 · Birim test altyapısı
+- [ ] 144 · Firmware'i CI'da derle
+- [ ] 145 · Statik analiz
+- [ ] 146 · CAN mesaj kataloğu ve PC aracı
+- [ ] 147 · İki eksen
+- [ ] 148 · Kumanda tarafında arıza tespiti
+- [ ] 149 · Gecikme bütçesi
+- [ ] 150 · Portföy
