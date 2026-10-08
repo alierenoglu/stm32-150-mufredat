@@ -2,7 +2,7 @@
 
 # M05 · Motor, Encoder, Hız ve Konum Kontrolü
 
-Görevler 061–075 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 061–075 · [Tüm görevler](../GOREVLER.md)
 
 DC motor, encoder, hız ve konum kontrolü. Wokwi yolunda 069 önce hazırlanır: motor modeli ve A/B üreteci kullanılır. Timer encoder modu ayrıca doğrulanır. Yazılımsal çözüm, donanım timer doğrulaması olarak raporlanmaz.
 

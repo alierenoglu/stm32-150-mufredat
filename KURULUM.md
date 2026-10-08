@@ -37,7 +37,7 @@ git clone https://github.com/KULLANICI/stm32-embedded-lab.git
 cd stm32-embedded-lab
 ```
 
-4. `ILERLEME.md` ve `PORTFOLYO.md` başındaki kişisel alanları doldur.
+4. `ILERLEME.md` başındaki kişisel alanları doldur.
 5. Python 3 ve GitHub CLI kur. `gh auth login` ile giriş yap.
 6. İlk modül için önce önizle, sonra oluştur:
 
@@ -62,18 +62,9 @@ CubeMX/CubeIDE ile yerel HAL geliştirme devam eder. Yerel ELF'i Wokwi'ye yükle
 - https://wokwi.com/pricing
 - https://docs.wokwi.com/vscode/getting-started
 
-Bu paket simülasyonu çalıştırılarak doğrulanmış firmware içermez. İlk başarılı projenin bağlantısını, MCU'sunu, derleme şeklini ve tarihini `docs/ortam-dogrulama.md` dosyasına yaz.
+Bu paket simülasyonu çalıştırılarak doğrulanmış firmware içermez. İlk başarılı projenin bağlantısını, MCU'sunu, derleme şeklini ve tarihini ilgili çözümün README.md dosyasına yaz.
 
 ## 4. Her görev
 
 [Çalışma düzenini](CALISMA-DUZENI.md) uygula. Issue numarası görev numarasıyla aynı olmak zorunda değildir. Kanıtı ekledikten sonra PR'ı birleştir, doğru issue'yu kapat ve ilerleme kutusunu işaretle.
 
-## 5. Ekip takibi
-
-Katılımcıların paylaşmayı seçtiği repo adreslerini `ekip.txt` içine `kullanici/repo` biçiminde ekle. Sonra:
-
-```bash
-python3 scripts/ilerleme.py --dosya ekip.txt --markdown
-```
-
-Çıktıyı `EKIP.md` dosyasına yapıştır. Bu komut ekrana tablo basar, dosyayı veya GitHub'ı değiştirmez.

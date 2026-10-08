@@ -3,7 +3,6 @@
 
   GOREVLER.md            bütün görevlerin özet tablosu
   gorevler/Mxx-*.md      her modülün ayrıntılı görev açıklamaları
-  docs/malzeme.md        parça listesi ve hangi görevde gerektiği
 
 Görevleri değiştirmek için gorevler.json'u düzenle ve bu scripti çalıştır:
     python3 scripts/md_uret.py
@@ -28,7 +27,6 @@ def gorevler_modulde(veri, m):
 def lejant(veri):
     s = ["**Simülasyon (Wokwi, Blue Pill F103):** "]
     s.append(" · ".join(f"{w['kisa']} {w['ad']}" for w in veri["wokwi"].values()))
-    s.append("  \nAyrıntı: [docs/simulasyon.md](docs/simulasyon.md)")
     return "".join(s)
 
 
@@ -65,8 +63,8 @@ def ozet_uret(veri):
 def modul_uret(veri, m):
     a, b = m["aralik"]
     L = [UYARI, f"# {m['kod']} · {m['ad']}", ""]
-    L.append(f"Görevler {a:03d}–{b:03d} · [Tüm görevler](../GOREVLER.md) · "
-             f"[Simülasyon rehberi](../docs/simulasyon.md)")
+    L.append(f"Görevler {a:03d}–{b:03d} · [Tüm görevler](../GOREVLER.md)"
+             f"")
     L.append("")
     L.append(m["aciklama"])
     for t in gorevler_modulde(veri, m):
@@ -143,7 +141,6 @@ def main():
     yaz(KOK / "GOREVLER.md", ozet_uret(veri))
     for m in veri["moduller"]:
         yaz(KOK / "gorevler" / modul_dosyasi(m), modul_uret(veri, m))
-    yaz(KOK / "docs" / "malzeme.md", malzeme_uret(veri))
 
 
 if __name__ == "__main__":

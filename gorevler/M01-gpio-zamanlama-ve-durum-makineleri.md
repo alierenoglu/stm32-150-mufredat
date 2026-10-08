@@ -2,7 +2,7 @@
 
 # M01 · GPIO, Zamanlama ve Durum Makineleri
 
-Görevler 001–015 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 001–015 · [Tüm görevler](../GOREVLER.md)
 
 Proje kurulumu, debugger, GPIO, bloklamayan zamanlama, buton olayları ve durum makineleri. Modülün sonunda kodunu modüllere ayırmış ve zamanı bloklamadan yönetiyor olacaksın.
 

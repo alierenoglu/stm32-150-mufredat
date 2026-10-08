@@ -2,7 +2,7 @@
 
 # M07 · CAN, Hata Yönetimi, Watchdog ve FreeRTOS
 
-Görevler 086–095 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 086–095 · [Tüm görevler](../GOREVLER.md)
 
 CAN haberleşmesi ve hata durumları, watchdog, hata yönetimi durum makinesi, HardFault analizi ve FreeRTOS temelleri.
 

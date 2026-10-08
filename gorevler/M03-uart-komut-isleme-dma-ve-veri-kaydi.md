@@ -2,7 +2,7 @@
 
 # M03 · UART, Komut İşleme, DMA ve Veri Kaydı
 
-Görevler 031–045 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 031–045 · [Tüm görevler](../GOREVLER.md)
 
 Seri haberleşme, komut ayrıştırma, halka tampon, paket protokolü ve CRC, DMA, sabit örnekleme, Flash'a kayıt ve bilgisayarda canlı grafik. Bu modülün araçlarını sonraki her modülde veri görmek için kullanacaksın.
 
@@ -184,10 +184,10 @@ Seri haberleşme, komut ayrıştırma, halka tampon, paket protokolü ve CRC, DM
 
 **Başarı ölçütü**
 
-- Paket formatı docs/ altında tablo halinde.
+- Paket formatı çözümün README.md dosyasında tablo halinde.
 - Python 10.000 paketin kaçının bozuk veya kayıp olduğunu raporluyor.
 
-**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).
+**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle.
 
 ---
 
@@ -208,7 +208,7 @@ Seri haberleşme, komut ayrıştırma, halka tampon, paket protokolü ve CRC, DM
 - Bağlantı kesilince 500 ms içinde güvenli duruma geçiyor.
 - Bağlantı dönünce sistem kendiliğinden toparlanıyor.
 
-**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).
+**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle.
 
 ---
 
@@ -268,7 +268,7 @@ Seri haberleşme, komut ayrıştırma, halka tampon, paket protokolü ve CRC, DM
 
 - 100 Hz veri 5 dakika boyunca kayıpsız kaydediliyor.
 
-**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).
+**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle.
 
 ---
 

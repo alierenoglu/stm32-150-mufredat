@@ -2,7 +2,7 @@
 
 # M08 · Bitirme Projesi: Steer-by-Wire Prototipi
 
-Görevler 096–100 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 096–100 · [Tüm görevler](../GOREVLER.md)
 
 Steer-by-wire eğitim prototipi. Wokwi sürümünde IMU veya kayıt girdisi, UART mesajları ve sanal motor kullanılır. CAN sürümü ayrı bir donanım doğrulama aşamasıdır. Gerçek araçta kullanıma yönelik bir sistem değildir.
 

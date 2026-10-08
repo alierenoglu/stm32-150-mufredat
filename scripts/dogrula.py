@@ -25,7 +25,7 @@ def main():
             assert all(k in v['parcalar'] for k in x.split('/'))
         ms=[m for m in v['moduller'] if m['aralik'][0]<=t['no']<=m['aralik'][1]]
         assert len(ms)==1 and ms[0]['no']==t['modul']
-    outputs={'GOREVLER.md':ozet_uret(v),'docs/malzeme.md':malzeme_uret(v)}
+    outputs={'GOREVLER.md':ozet_uret(v)}
     outputs.update({f"gorevler/{modul_dosyasi(m)}":modul_uret(v,m) for m in v['moduller']})
     for name,expected in outputs.items():assert (KOK/name).read_text(encoding='utf-8')==expected,f'Yeniden üret: {name}'
     for f in KOK.rglob('*.md'):

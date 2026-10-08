@@ -4,8 +4,7 @@
 
 100 ana görev sırayla ilerler; her beşinci görev önceki görevleri birleştiren bir mini uygulamadır. 96–100 bitirme projesidir. 101–125 pekiştirme ve 126–150 ileri görevler zorunlu değildir; önkoşulunu bitirdiğin anda yapabilirsin.
 
-**Simülasyon (Wokwi, Blue Pill F103):** ✅ Wokwi desteğine uygun, görev deneyi gerekli · 🟡 Wokwi'de kısmen yapılır · ❔ Wokwi desteği belirsiz, dene · ❌ Wokwi ile donanım doğrulaması yok · 💻 Kart gerekmez, bilgisayarda  
-Ayrıntı: [docs/simulasyon.md](docs/simulasyon.md)
+**Simülasyon (Wokwi, Blue Pill F103):** ✅ Wokwi desteğine uygun, görev deneyi gerekli · 🟡 Wokwi'de kısmen yapılır · ❔ Wokwi desteği belirsiz, dene · ❌ Wokwi ile donanım doğrulaması yok · 💻 Kart gerekmez, bilgisayarda
 
 | Modül | Görevler | Konu |
 |---|---|---|

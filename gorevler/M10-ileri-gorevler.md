@@ -2,7 +2,7 @@
 
 # M10 · İleri Görevler
 
-Görevler 126–150 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 126–150 · [Tüm görevler](../GOREVLER.md)
 
 Veri kaydı, bootloader, gelişmiş kestirim ve kontrol, test/CI altyapısı ve bitirme projesinin genişletilmesi. Zorunlu değil; 150. görev (portföy) herkes için önerilir.
 

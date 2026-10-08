@@ -2,7 +2,7 @@
 
 # M06 · IMU, Kalibrasyon ve Filtreler
 
-Görevler 076–085 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 076–085 · [Tüm görevler](../GOREVLER.md)
 
 Jiroskop bias'ı ve kayma, ivmeölçerden açı, kalibrasyon, sabit örnekleme, complementary ve Kalman filtreleri. Filtreleri aynı kayıt üzerinde karşılaştırıp kartta ve bilgisayarda aynı sonucu aldığını göstereceksin.
 

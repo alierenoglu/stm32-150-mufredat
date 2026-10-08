@@ -2,7 +2,7 @@
 
 # M04 · I²C, SPI, Sensörler, Ekran ve Sürücü Yazma
 
-Görevler 046–060 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 046–060 · [Tüm görevler](../GOREVLER.md)
 
 I²C ve SPI ile sensör okuma, register haritası, kesme ve bloklamasız okuma, kendi sürücü katmanını yazma, OLED ekran ve bağlantı hatalarından kurtulma.
 
@@ -209,7 +209,7 @@ I²C ve SPI ile sensör okuma, register haritası, kesme ve bloklamasız okuma, 
 - Zaman damgaları arasındaki fark sabit.
 - Kayıp örnek sayısı raporlanıyor.
 
-**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).
+**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle.
 
 ---
 

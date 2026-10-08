@@ -2,7 +2,7 @@
 
 # M09 · Pekiştirme
 
-Görevler 101–125 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 101–125 · [Tüm görevler](../GOREVLER.md)
 
 Hata bulma, ölçme, karşılaştırma ve farklı koşullarda deneme. Zorunlu değil. Her görevin önkoşulu belirtilmiş; o ana görevi bitirdikten sonra istediğin zaman yapabilirsin.
 
@@ -206,7 +206,7 @@ Hata bulma, ölçme, karşılaştırma ve farklı koşullarda deneme. Zorunlu de
 
 - Hata türüne göre reddetme ve kurtarma oranları tablosu.
 
-**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle (docs/simulasyon.md).
+**Simülasyon:** ✅ Wokwi desteğine uygun, görev deneyi gerekli. Simülasyondaki UART'ı bilgisayardaki Python'a bağlamak için wokwi.toml'a rfc2217ServerPort ekle.
 
 ---
 

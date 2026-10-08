@@ -2,7 +2,7 @@
 
 HAL ile LED yakmaktan steer-by-wire eğitim prototipine: 100 ana görev, 25 pekiştirme ve 25 ileri görev.
 
-[Kurulum](KURULUM.md) · [150 görev](GOREVLER.md) · [Kişisel ilerleme](ILERLEME.md) · [Çalışma düzeni](CALISMA-DUZENI.md) · [Wokwi](docs/simulasyon.md) · [Ekip](EKIP.md)
+[Kurulum](KURULUM.md) · [150 görev](GOREVLER.md) · [Kişisel ilerleme](ILERLEME.md) · [Çalışma düzeni](CALISMA-DUZENI.md)
 
 ## Düzen
 

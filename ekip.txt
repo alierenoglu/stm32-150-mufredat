@@ -1,4 +1,0 @@
-# Her satıra bir ekip üyesinin reposu: sahip/repo
-# Kullanım: python3 scripts/ilerleme.py --dosya ekip.txt --markdown
-# kullanici1/stm32-150
-# kullanici2/stm32-150

@@ -2,7 +2,7 @@
 
 # M02 · Kesmeler, Timer, PWM ve ADC
 
-Görevler 016–030 · [Tüm görevler](../GOREVLER.md) · [Simülasyon rehberi](../docs/simulasyon.md)
+Görevler 016–030 · [Tüm görevler](../GOREVLER.md)
 
 Kesmeler ve öncelikleri, clock ağacı, timer hesapları, PWM, input capture ve ADC. Modül, ilk aç-kapa kontrolcünle (histerezisli termostat) biter.
 
