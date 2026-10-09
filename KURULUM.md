@@ -24,7 +24,7 @@ Bütün görevleri bir anda istersen `--sadece 1-150` kullan. Aynı numaralı me
 
 ## 2. Wokwi'de ilk proje
 
-[Resmî Nucleo C031](https://docs.wokwi.com/parts/board-st-nucleo-c031c6) veya [Nucleo L031](https://docs.wokwi.com/parts/board-st-nucleo-l031k6) sayfasındaki HAL örneğini kopyala. İlk hedef `HAL_GPIO_WritePin` ile LED yakmak.
+[001 LED başlangıç dosyalarını](baslangic/001-led/README.md) aç ve oradaki adımları uygula. İlk hedef GPIO'yu kendin kurarak LED'i yakmak ve ardından söndürmek.
 
 Seçtiğin MCU'ya uygun pinleri ve ayarları kullan. Görevlerdeki F103 destek etiketleri başka kartlar için doğrulama sayılmaz. F103 için derlenen program başka MCU'da kullanılmaz.
 

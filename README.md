@@ -15,7 +15,7 @@ Herkes aynı konuları çalışır ve kendi çözümünü kendi reposunda tutar.
 
 ## Çalışma ortamı
 
-Wokwi kullanıyoruz. Hazır çalışan başlangıç projesi henüz eklenmedi. Önce kurulumdaki HAL LED örneğini çalıştıracağız. Motor ve encoder modeli ilgili görevde yazılacak. Simülatörde doğrulanamayan donanım görevleri açık kalır.
+Wokwi kullanıyoruz. [001 LED başlangıç dosyalarından](baslangic/001-led/README.md) başla. HAL derleme ortamı için bağlantıdaki örneği açıp boş şablon kodunu yerleştir. Motor ve encoder modeli ilgili görevde yazılacak. Simülatörde doğrulanamayan donanım görevleri açık kalır.
 
 ## Görevleri düzenlemek
 
